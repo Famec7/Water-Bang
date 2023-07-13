@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolingObjectPrefab: {fileID: 1198945903325388508, guid: d2906081a7030354a819cc3e0a8655f7, type: 3}
-  initCount: 20
+  initCount: 30
 --- !u!1 &1152385905
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,5 +305,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c46a5976cd4434f965ef2bf3f6ddc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnDelay: 5
-  spawnDuration: 0
+  respawnDelay: 2
+  spawnDuration: 30
