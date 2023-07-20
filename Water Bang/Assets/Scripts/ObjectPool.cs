@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public static ObjectPool Instance;
+    private static ObjectPool Instance;
 
     [SerializeField]
     private GameObject poolingObjectPrefab;

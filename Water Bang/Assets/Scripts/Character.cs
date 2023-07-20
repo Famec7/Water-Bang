@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-
     [SerializeField]
     private GameObject transformPrefab;
 
+    public float Scale;
     public float Speed;
     public float fixedDelay;
     public float minX, maxX;
@@ -30,6 +30,20 @@ public class Character : MonoBehaviour
         movePosition = temp;*/
     }
 
+    private bool IsFlip()
+    {
+        float isFlip = transform.position.x - movePosition.transform.position.x;
+        if (isFlip > 0) return false;
+        else return true;
+    }
+
+    private void SetScale()
+    {
+        float rangeY = maxY - minY, centerY = (maxY + minY) / 2;
+        float magScale = (centerY - transform.position.y) / rangeY;
+        transform.localScale = new Vector3((1 + magScale) * Scale, (1 + magScale) * Scale);
+    }
+
     public void DestroyCharacter()
     {
         ObjectPool.ReturnObject(this);
@@ -46,6 +60,7 @@ public class Character : MonoBehaviour
         transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
         CreateNewTransform();
         movePosition.transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        GetComponent<SpriteRenderer>().flipX = IsFlip();
     }
 
     void Start()
@@ -56,12 +71,13 @@ public class Character : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, movePosition.transform.position, Speed * Time.deltaTime);
-
+        SetScale();
         if (Vector2.Distance(transform.position, movePosition.transform.position) < 0.3)
         {
             if (moveDelay <= 0)
             {
                 movePosition.transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+                GetComponent<SpriteRenderer>().flipX = IsFlip();
                 moveDelay = fixedDelay;
             }
             else

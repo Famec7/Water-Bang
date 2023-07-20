@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 1198945903325388508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.55, y: 1.1, z: -0.40375775}
-  m_LocalScale: {x: 3, y: 3, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -144,8 +144,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformPrefab: {fileID: 1136586131887147673, guid: b30bf0c310dab3640b2a33bb991cd1f3, type: 3}
-  Speed: 7
-  fixedDelay: 0.5
+  Scale: 2.5
+  Speed: 5
+  fixedDelay: 1
   minX: -5
   maxX: 5
   minY: -5

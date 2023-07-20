@@ -17,6 +17,7 @@ public class Spawner: MonoBehaviour
     {
         InvokeRepeating("SpawnCharacter", 5, respawnDelay);
     }
+
     void Update()
     {
 
