@@ -5,16 +5,18 @@ using UnityEngine;
 public class SpecialEnemy3 : Character
 {
     [SerializeField] private float attackTime;
-    [SerializeField] private float duration;
+    [SerializeField] private float attackDuration;
     private GameObject water;
     private float time = 0f;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         water = transform.GetChild(0).gameObject;
     }
-    private void Update()
+    protected override void Update()
     {
+        base .Update();
         time += Time.deltaTime;
         Attack();
     }
@@ -26,7 +28,7 @@ public class SpecialEnemy3 : Character
             water.SetActive(true);
             time = 0f;
         }
-        if(time > duration && water.activeSelf)
+        if(time > attackDuration && water.activeSelf)
         {
             water.SetActive(false);
             time = 0f;

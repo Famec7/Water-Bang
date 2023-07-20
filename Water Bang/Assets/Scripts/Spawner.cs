@@ -6,20 +6,23 @@ public class Spawner: MonoBehaviour
 {
     public float respawnDelay;
     public float spawnDuration;
+    private bool isSpawn = false;
 
-    private void SpawnCharacter()
+    private IEnumerator SpawnEnemy()
     {
-        var character = ObjectPool.GetObject();
-        character.SetDuration(spawnDuration);
+        yield return new WaitForSeconds(respawnDelay);
+        GameObject obj = ObjectPool.instance.GetObject("enemy");
+        Debug.Log("Spawn");
+
+        isSpawn = false;
     }
 
-    void Start()
+    private void Update()
     {
-        InvokeRepeating("SpawnCharacter", 5, respawnDelay);
-    }
-
-    void Update()
-    {
-
+        if(!isSpawn)
+        {
+            isSpawn = true;
+            StartCoroutine("SpawnEnemy");
+        }
     }
 }

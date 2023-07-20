@@ -7,20 +7,14 @@ public class Character : MonoBehaviour
     [SerializeField]
     private GameObject transformPrefab;
 
-    public float Scale;
-    public float Speed;
-    public float fixedDelay;
-    public float minX, maxX;
-    public float minY, maxY;
+    public float scale;
+    public float speed;
+    private float fixedDelay = 0.1f;
+    private float minX = -0.7f, maxX = 0.7f;
+    private float minY = -0.7f, maxY = 0.7f;
 
     private GameObject movePosition;
     private float moveDelay;
-    private float Duration;
-
-    public void SetDuration(float activeDuration)
-    {
-        Duration = activeDuration;
-    }
 
     private void CreateNewTransform()
     {
@@ -41,12 +35,12 @@ public class Character : MonoBehaviour
     {
         float rangeY = maxY - minY, centerY = (maxY + minY) / 2;
         float magScale = (centerY - transform.position.y) / rangeY;
-        transform.localScale = new Vector3((1 + magScale) * Scale, (1 + magScale) * Scale);
+        transform.localScale = new Vector3((1 + magScale) * scale, (1 + magScale) * scale);
     }
 
     public void DestroyCharacter()
     {
-        ObjectPool.ReturnObject(this);
+        ObjectPool.instance.ReturnObject(this.gameObject);
     }
 
     private void OnMouseDown()
@@ -54,7 +48,7 @@ public class Character : MonoBehaviour
         DestroyCharacter();
     }
 
-    void Awake()
+    protected virtual void Awake()
     {
         moveDelay = fixedDelay;
         transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
@@ -63,14 +57,9 @@ public class Character : MonoBehaviour
         GetComponent<SpriteRenderer>().flipX = IsFlip();
     }
 
-    void Start()
+    protected virtual void Update()
     {
-        Invoke("DestroyCharacter", Duration);
-    }
-    
-    void Update()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, movePosition.transform.position, Speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, movePosition.transform.position, speed * Time.deltaTime);
         SetScale();
         if (Vector2.Distance(transform.position, movePosition.transform.position) < 0.3)
         {

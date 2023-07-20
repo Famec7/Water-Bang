@@ -8,6 +8,12 @@ public class NPC : Character
     private float patience;
     public float amountPertick;
 
+    public float Patience
+    {
+        get { return patience; }
+        set { patience = value; }
+    }
+
     public void DecreasePatience()
     {
         patience -= amountPertick;
