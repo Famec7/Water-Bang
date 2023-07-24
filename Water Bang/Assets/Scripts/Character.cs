@@ -10,8 +10,8 @@ public class Character : MonoBehaviour
     public float scale;
     public float speed;
     private float fixedDelay = 0.1f;
-    private float minX = -0.7f, maxX = 0.7f;
-    private float minY = -0.7f, maxY = 0.7f;
+    private float minX = -9.6f, maxX = 9.6f;
+    private float minY = -5.4f, maxY = 5.4f;
 
     private GameObject movePosition;
     private float moveDelay;

@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07426ba640b3ec642a04d6274b8301eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transformPrefab: {fileID: 0}
+  transformPrefab: {fileID: 1136586131887147673, guid: b30bf0c310dab3640b2a33bb991cd1f3, type: 3}
   scale: 1
   speed: 5
   radius: 5

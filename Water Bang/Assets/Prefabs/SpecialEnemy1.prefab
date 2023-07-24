@@ -125,6 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb88274e60ace64c97c1ec0906477bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transformPrefab: {fileID: 0}
+  transformPrefab: {fileID: 1136586131887147673, guid: b30bf0c310dab3640b2a33bb991cd1f3, type: 3}
   scale: 0.5
   speed: 10

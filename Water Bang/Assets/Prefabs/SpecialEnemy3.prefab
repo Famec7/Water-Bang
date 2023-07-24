@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddc6f81168413a4eacc77290d33098c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transformPrefab: {fileID: 0}
+  transformPrefab: {fileID: 1136586131887147673, guid: b30bf0c310dab3640b2a33bb991cd1f3, type: 3}
   scale: 1
   speed: 5
   attackTime: 10
