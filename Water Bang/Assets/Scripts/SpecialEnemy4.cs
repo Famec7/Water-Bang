@@ -27,4 +27,12 @@ public class SpecialEnemy4 : Character
                 col.gameObject.GetComponent<NPC>().Patience -= power;
         }
     }
+
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        base.OnCollisionEnter2D(collision);
+
+        if (collision.collider.CompareTag("water"))
+            ObjectPool.instance.ReturnObject(this.gameObject);
+    }
 }

@@ -1,7 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
+public enum States
+{
+    Idle,
+    Left,
+    Right,
+    Die
+}
 public class Character : MonoBehaviour
 {
     [SerializeField]
@@ -10,11 +18,14 @@ public class Character : MonoBehaviour
     public float scale;
     public float speed;
     private float fixedDelay = 0.1f;
-    private float minX = -0.7f, maxX = 0.7f;
-    private float minY = -0.7f, maxY = 0.7f;
+    private float minX = 0f, maxX = 1f;
+    private float minY = 0f, maxY = 1f;
+    private SpriteRenderer spriteRenderer;
 
     private GameObject movePosition;
     private float moveDelay;
+
+    public States currentState = States.Idle;
 
     private void CreateNewTransform()
     {
@@ -50,11 +61,18 @@ public class Character : MonoBehaviour
 
     protected virtual void Awake()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         moveDelay = fixedDelay;
         transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
         CreateNewTransform();
         movePosition.transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-        GetComponent<SpriteRenderer>().flipX = IsFlip();
+        spriteRenderer.flipX = IsFlip();
+
+        Vector3 minPos = Camera.main.ViewportToWorldPoint(new Vector3(minX, minY, 0));
+        Vector3 maxPos = Camera.main.ViewportToWorldPoint(new Vector3(maxX, maxY, 0));
+
+        minX = minPos.x; minY = minPos.y;
+        maxX = maxPos.x; maxY = maxPos.y;
     }
 
     protected virtual void Update()
@@ -66,13 +84,39 @@ public class Character : MonoBehaviour
             if (moveDelay <= 0)
             {
                 movePosition.transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-                GetComponent<SpriteRenderer>().flipX = IsFlip();
+                spriteRenderer.flipX = IsFlip();
                 moveDelay = fixedDelay;
             }
             else
             {
                 moveDelay -= Time.deltaTime;
             }
+        }
+
+        switch (currentState)
+        {
+            case States.Idle:
+                break;
+            case States.Left:
+                break;
+            case States.Right:
+                break;
+            case States.Die:
+                break;
+            default:
+                break;
+        }
+    }
+
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("TopStage"))
+        {
+            movePosition.transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        }
+        else if (collision.collider.CompareTag("BottomStage"))
+        {
+            movePosition.transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
         }
     }
 }

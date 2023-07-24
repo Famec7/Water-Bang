@@ -34,4 +34,12 @@ public class SpecialEnemy3 : Character
             time = 0f;
         }
     }
+
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        base.OnCollisionEnter2D(collision);
+
+        if (collision.collider.CompareTag("water"))
+            ObjectPool.instance.ReturnObject(this.gameObject);
+    }
 }

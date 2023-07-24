@@ -12,7 +12,11 @@ public class ObjectPool : MonoBehaviour
     public int npcCount;
 
     [SerializeField]
-    private GameObject enemyPrefab;
+    private GameObject enemy1Prefab;
+    [SerializeField]
+    private GameObject enemy2Prefab;
+    [SerializeField]
+    private GameObject enemy3Prefab;
     private List<GameObject> enemyPool;
     public int enemyCount;
 
@@ -97,7 +101,13 @@ public class ObjectPool : MonoBehaviour
                 newObj.SetActive(false);
                 break;
             case "enemy":
-                newObj = Instantiate(enemyPrefab);
+                int num = Random.Range(1, 4);
+                if(num == 1)
+                    newObj = Instantiate(enemy1Prefab);
+                else if(num == 2)
+                    newObj = Instantiate(enemy2Prefab);
+                else if(num == 3)
+                    newObj = Instantiate(enemy3Prefab);
                 newObj.SetActive(false);
                 break;
             case "spcialEnemy1":

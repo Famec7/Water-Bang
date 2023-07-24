@@ -48,4 +48,12 @@ public class SpecialEnemy2 : Character
 
         return enemyPosition;
     }
+
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        base.OnCollisionEnter2D(collision);
+
+        if (collision.collider.CompareTag("water"))
+            ObjectPool.instance.ReturnObject(this.gameObject);
+    }
 }
