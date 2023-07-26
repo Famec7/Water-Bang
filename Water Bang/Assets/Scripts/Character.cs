@@ -24,6 +24,7 @@ public class Character : MonoBehaviour
     private float moveDelay;
 
     public States currentState = States.Idle;
+    protected Animator animator;
 
     private void CreateNewTransform()
     {
@@ -59,6 +60,7 @@ public class Character : MonoBehaviour
 
     protected virtual void Awake()
     {
+        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         moveDelay = fixedDelay;
         transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
@@ -74,6 +76,29 @@ public class Character : MonoBehaviour
     }
 
     protected virtual void Update()
+    {
+        RandomMove();
+
+        if(this.gameObject.activeSelf)
+            currentState = States.Idle;
+
+        switch (currentState)
+        {
+            case States.Idle:
+                animator.SetBool("Idle", true);
+                animator.SetBool("Exit", false);
+                break;
+            case States.Exit:
+                animator.SetBool("Idle", false);
+                animator.SetBool("Exit", true);
+                ObjectPool.instance.ReturnObject(this.gameObject);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void RandomMove()
     {
         transform.position = Vector2.MoveTowards(transform.position, movePosition.transform.position, speed * Time.deltaTime);
         SetScale();
@@ -103,6 +128,11 @@ public class Character : MonoBehaviour
         {
             movePosition.transform.position = Vector3.zero;
             moveDelay = fixedDelay;
+        }
+
+        if (collision.collider.CompareTag("water"))
+        {
+            currentState = States.Exit;
         }
     }
 }
