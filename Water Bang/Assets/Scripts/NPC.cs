@@ -11,21 +11,25 @@ public class NPC : Character
     public float Patience
     {
         get { return patience; }
-        set { patience = value; }
+        set
+        {
+            if (patience <= 0)
+            {
+                DestroyCharacter();
+                patience = 0;
+            }
+            else
+                patience = value;
+        }
     }
 
     public void DecreasePatience()
     {
-        patience -= amountPertick;
-        if (patience <= 0)
-            DestroyCharacter();
+        Patience -= amountPertick;
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         base.OnCollisionEnter2D(collision);
-
-        if (collision.collider.CompareTag("water"))
-            ObjectPool.instance.ReturnObject(this.gameObject);
     }
 }

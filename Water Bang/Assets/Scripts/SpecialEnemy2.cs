@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialEnemy2 : Character
+public class SpecialEnemy2 : Enemy
 {
-    private float time = 0f;
     [SerializeField] private float responeTime;
     [SerializeField] private float spawnNumber;
     [SerializeField] private float radius;
@@ -14,23 +13,23 @@ public class SpecialEnemy2 : Character
         base.Awake();
     }
 
+    private void Start()
+    {
+        StartCoroutine("Spawn");
+    }
+
     protected override void Update()
     {
         base.Update();
-        time += Time.deltaTime;
-        Spawn();
     }
-    private void Spawn()
+    private IEnumerator Spawn()
     {
-        if (time > responeTime)
+        yield return new WaitForSeconds(responeTime);
+        for (int i = 0; i < spawnNumber; i++)
         {
-            for (int i = 0; i < spawnNumber; i++)
-            {
-                GameObject enemy = ObjectPool.instance.GetObject("enemy");
-                // 적 스폰 방식은 주어진 반지름 안에서 랜덤으로 생성
-                enemy.gameObject.transform.position = GetPosition();
-            }
-            time = 0f;
+            GameObject enemy = ObjectPool.instance.GetObject("enemy");
+            // 적 스폰 방식은 주어진 반지름 안에서 랜덤으로 생성
+            enemy.gameObject.transform.position = GetPosition();
         }
     }
 
@@ -52,8 +51,5 @@ public class SpecialEnemy2 : Character
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         base.OnCollisionEnter2D(collision);
-
-        if (collision.collider.CompareTag("water"))
-            ObjectPool.instance.ReturnObject(this.gameObject);
     }
 }

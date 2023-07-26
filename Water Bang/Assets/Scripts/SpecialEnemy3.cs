@@ -1,45 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
-public class SpecialEnemy3 : Character
+public class SpecialEnemy3 : Enemy
 {
     [SerializeField] private float attackTime;
     [SerializeField] private float attackDuration;
-    private GameObject water;
-    private float time = 0f;
+    private PostProcessVolume blur;
+    private DepthOfField pr;
 
     protected override void Awake()
     {
         base.Awake();
-        water = transform.GetChild(0).gameObject;
+    }
+    private void Start()
+    {
+        blur = Camera.main.GetComponent<PostProcessVolume>();
+        blur.sharedProfile.TryGetSettings<DepthOfField>(out pr);
+        pr.focalLength.overrideState = false;
+        StartCoroutine("Attack");
     }
     protected override void Update()
     {
         base .Update();
-        time += Time.deltaTime;
-        Attack();
     }
 
-    public void Attack()
+    public IEnumerator Attack()
     {
-        if(time > attackTime && !water.activeSelf)
-        {
-            water.SetActive(true);
-            time = 0f;
-        }
-        if(time > attackDuration && water.activeSelf)
-        {
-            water.SetActive(false);
-            time = 0f;
-        }
+        pr.focalLength.overrideState = false;
+        yield return new WaitForSeconds(attackTime);
+
+        pr.focalLength.overrideState = true;
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         base.OnCollisionEnter2D(collision);
-
-        if (collision.collider.CompareTag("water"))
-            ObjectPool.instance.ReturnObject(this.gameObject);
     }
 }

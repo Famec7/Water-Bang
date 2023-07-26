@@ -7,7 +7,9 @@ public class ObjectPool : MonoBehaviour
     public static ObjectPool instance;
 
     [SerializeField]
-    private GameObject npcPrefab;
+    private GameObject npc1Prefab;
+    [SerializeField]
+    private GameObject npc2Prefab;
     private List<GameObject> npcPool;
     public int npcCount;
 
@@ -97,11 +99,15 @@ public class ObjectPool : MonoBehaviour
         switch (type)
         {
             case "npc":
-                newObj = Instantiate(npcPrefab);
+                int num = Random.Range(1, 3);
+                if (num == 1)
+                    newObj = Instantiate(npc1Prefab);
+                else if (num == 2)
+                    newObj = Instantiate(npc2Prefab);
                 newObj.SetActive(false);
                 break;
             case "enemy":
-                int num = Random.Range(1, 4);
+                num = Random.Range(1, 4);
                 if(num == 1)
                     newObj = Instantiate(enemy1Prefab);
                 else if(num == 2)

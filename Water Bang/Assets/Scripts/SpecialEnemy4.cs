@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialEnemy4 : Character
+public class SpecialEnemy4 : Enemy
 {
     [SerializeField]
     private float radius;
@@ -31,8 +31,5 @@ public class SpecialEnemy4 : Character
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         base.OnCollisionEnter2D(collision);
-
-        if (collision.collider.CompareTag("water"))
-            ObjectPool.instance.ReturnObject(this.gameObject);
     }
 }

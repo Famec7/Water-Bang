@@ -9,14 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5887923120292238012}
-  - component: {fileID: 5148521770035637053}
   - component: {fileID: 1971639513924405014}
   - component: {fileID: 5257859793373064296}
   - component: {fileID: 8742558216634672575}
   - component: {fileID: 3378817285066865596}
   - component: {fileID: 8531373868886897024}
   m_Layer: 0
-  m_Name: Npc
+  m_Name: Npc2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,30 +30,12 @@ Transform:
   m_GameObject: {fileID: 2283397531042146865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.84, y: 0.27, z: -0.0297}
-  m_LocalScale: {x: 0.1659906, y: 0.1659906, z: 0.1659906}
+  m_LocalScale: {x: 8.862616, y: 8.862616, z: 8.862616}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5148521770035637053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2283397531042146865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14622a5ce41d2f448baee1b58ad03e84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transformPrefab: {fileID: 0}
-  scale: 1
-  speed: 5
-  currentState: 0
-  patience: 30
-  amountPertick: 5
 --- !u!50 &1971639513924405014
 Rigidbody2D:
   serializedVersion: 4
@@ -123,7 +104,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: f955a40c818fe2a438336203af220ecd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c446ca0e8b8067a45a5aceab36ee7a84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,9 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14622a5ce41d2f448baee1b58ad03e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transformPrefab: {fileID: 0}
-  scale: 1
-  speed: 5
+  transformPrefab: {fileID: 1136586131887147673, guid: b30bf0c310dab3640b2a33bb991cd1f3, type: 3}
+  scale: 10
+  speed: 300
   currentState: 0
   patience: 30
   amountPertick: 1
@@ -162,7 +143,7 @@ Animator:
   m_GameObject: {fileID: 2283397531042146865}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16889770c6cf4e94d996c7958b6e33a6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

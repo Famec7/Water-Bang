@@ -6,9 +6,7 @@ using UnityEngine;
 public enum States
 {
     Idle,
-    Left,
-    Right,
-    Die
+    Exit
 }
 public class Character : MonoBehaviour
 {
@@ -92,31 +90,19 @@ public class Character : MonoBehaviour
                 moveDelay -= Time.deltaTime;
             }
         }
-
-        switch (currentState)
-        {
-            case States.Idle:
-                break;
-            case States.Left:
-                break;
-            case States.Right:
-                break;
-            case States.Die:
-                break;
-            default:
-                break;
-        }
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("TopStage"))
         {
-            movePosition.transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+            movePosition.transform.position = Vector3.zero;
+            moveDelay = fixedDelay;
         }
         else if (collision.collider.CompareTag("BottomStage"))
         {
-            movePosition.transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+            movePosition.transform.position = Vector3.zero;
+            moveDelay = fixedDelay;
         }
     }
 }

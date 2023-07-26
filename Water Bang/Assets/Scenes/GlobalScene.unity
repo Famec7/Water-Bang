@@ -152,8 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c46a5976cd4434f965ef2bf3f6ddc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnDelay: 5
-  spawnDuration: 60
+  npcRespawnDelay: 5
+  enemyRespawnDelay: 5
+  specialEnemy1RespawnDelay: 5
+  specialEnemy2RespawnDelay: 5
+  specialEnemy3RespawnDelay: 5
+  specialEnemy4RespawnDelay: 5
 --- !u!4 &204915287
 Transform:
   m_ObjectHideFlags: 0
@@ -282,20 +286,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344acda4ebd7a454a99b58d05823d79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcPrefab: {fileID: 2283397531042146865, guid: 13681d5e45ee7dc4386225ed24cb1fa9, type: 3}
-  npcCount: 0
+  npc1Prefab: {fileID: 2283397531042146865, guid: 13681d5e45ee7dc4386225ed24cb1fa9, type: 3}
+  npc2Prefab: {fileID: 2283397531042146865, guid: eefab0ef8e6ff274fa64ae7b09f9af7e, type: 3}
+  npcCount: 10
   enemy1Prefab: {fileID: 7287813176440309464, guid: 08afd44b6aa016448aa9e6e0c8d65b86, type: 3}
   enemy2Prefab: {fileID: 7287813176440309464, guid: 40f6f4c2b0c1ea041807b0da1e4e17e6, type: 3}
   enemy3Prefab: {fileID: 7287813176440309464, guid: fc84384b20f54ac418f61d1eaa1eb951, type: 3}
   enemyCount: 10
   specialEnemy1Prefab: {fileID: 5974108953350820026, guid: 4f627d57c3710cf4795b703bad621d3d, type: 3}
-  specialEnemy1Count: 0
+  specialEnemy1Count: 10
   specialEnemy2Prefab: {fileID: 1017445400130602231, guid: d662102993cadbf49a8d034c567175a6, type: 3}
-  specialEnemy2Count: 0
+  specialEnemy2Count: 10
   specialEnemy3Prefab: {fileID: 489410436617930548, guid: 36cf4605d87b78a4d8ceb83ccbb708ce, type: 3}
-  specialEnemy3Count: 0
+  specialEnemy3Count: 10
   specialEnemy4Prefab: {fileID: 4711877880269991136, guid: 1634a83749f49784b9d0e260c538a9db, type: 3}
-  specialEnemy4Count: 0
+  specialEnemy4Count: 10
 --- !u!4 &562239871
 Transform:
   m_ObjectHideFlags: 0
@@ -448,7 +453,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.35}
   m_EdgeRadius: 0
 --- !u!4 &984177152
 Transform:
@@ -476,7 +481,9 @@ GameObject:
   - component: {fileID: 1954499527}
   - component: {fileID: 1954499526}
   - component: {fileID: 1954499525}
-  m_Layer: 0
+  - component: {fileID: 1954499528}
+  - component: {fileID: 1954499529}
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -557,6 +564,83 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1954499528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954499524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 1954499527}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
+--- !u!114 &1954499529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954499524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 692026d2c01cbbb4f930e9b647e20d60, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1 &2118910459
 GameObject:
   m_ObjectHideFlags: 0
