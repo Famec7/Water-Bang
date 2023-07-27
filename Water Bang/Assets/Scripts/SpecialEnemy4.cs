@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialEnemy4 : Enemy
+public class SpecialEnemy4 : Character
 {
     [SerializeField]
     private float radius;

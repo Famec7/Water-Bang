@@ -129,10 +129,5 @@ public class Character : MonoBehaviour
             movePosition.transform.position = Vector3.zero;
             moveDelay = fixedDelay;
         }
-
-        if (collision.collider.CompareTag("water"))
-        {
-            currentState = States.Exit;
-        }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialEnemy2 : Enemy
+public class SpecialEnemy2 : Character
 {
     [SerializeField] private float responeTime;
     [SerializeField] private float spawnNumber;

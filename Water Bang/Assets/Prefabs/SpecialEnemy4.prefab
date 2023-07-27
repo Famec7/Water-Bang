@@ -132,7 +132,7 @@ MonoBehaviour:
   speed: 300
   currentState: 0
   radius: 5
-  power: 1
+  power: 3
 --- !u!95 &4056279368702316376
 Animator:
   serializedVersion: 5

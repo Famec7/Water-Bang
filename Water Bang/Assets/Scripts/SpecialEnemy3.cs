@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-public class SpecialEnemy3 : Enemy
+public class SpecialEnemy3 : Character
 {
     [SerializeField] private float attackTime;
     [SerializeField] private float attackDuration;
