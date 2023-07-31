@@ -300,7 +300,15 @@ MonoBehaviour:
   specialEnemy3Prefab: {fileID: 489410436617930548, guid: 36cf4605d87b78a4d8ceb83ccbb708ce, type: 3}
   specialEnemy3Count: 10
   specialEnemy4Prefab: {fileID: 4711877880269991136, guid: 1634a83749f49784b9d0e260c538a9db, type: 3}
+<<<<<<< Updated upstream
+  specialEnemy4Count: 0
+=======
   specialEnemy4Count: 10
+  whistlePrefab: {fileID: 664957823403954248, guid: aad48f5e4cfab5849bab93c5e1d2063a, type: 3}
+  waterBombPrefab: {fileID: 7654132609752765308, guid: cd5aa0ec9c7cfc247ab784f4b92be88d, type: 3}
+  energyDrinkPrefab: {fileID: 2051076629501530822, guid: 2c7f3060cb4c28d44a4774bfbe23543d, type: 3}
+  ItemCount: 0
+>>>>>>> Stashed changes
 --- !u!4 &562239871
 Transform:
   m_ObjectHideFlags: 0

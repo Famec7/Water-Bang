@@ -15,12 +15,17 @@ public class NPC : Character
         {
             if (patience <= 0)
             {
-                DestroyCharacter();
+                currentState = States.Exit;
                 patience = 0;
             }
             else
                 patience = value;
         }
+    }
+
+    protected override void Update()
+    {
+        base.Update();
     }
 
     public void DecreasePatience()

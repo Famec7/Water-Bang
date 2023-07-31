@@ -8,6 +8,7 @@ public enum States
     Idle,
     Exit
 }
+
 public class Character : MonoBehaviour
 {
     [SerializeField]
@@ -22,9 +23,9 @@ public class Character : MonoBehaviour
 
     private GameObject movePosition;
     private float moveDelay;
+    private Animator animator;
 
     public States currentState = States.Idle;
-    protected Animator animator;
 
     private void CreateNewTransform()
     {
@@ -61,7 +62,7 @@ public class Character : MonoBehaviour
     protected virtual void Awake()
     {
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<spriteRenderer>();
         moveDelay = fixedDelay;
         transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
         CreateNewTransform();
@@ -77,11 +78,6 @@ public class Character : MonoBehaviour
 
     protected virtual void Update()
     {
-        RandomMove();
-
-        if(this.gameObject.activeSelf)
-            currentState = States.Idle;
-
         switch (currentState)
         {
             case States.Idle:
@@ -89,12 +85,37 @@ public class Character : MonoBehaviour
                 animator.SetBool("Exit", false);
                 break;
             case States.Exit:
-                animator.SetBool("Idle", false);
-                animator.SetBool("Exit", true);
-                ObjectPool.instance.ReturnObject(this.gameObject);
+                StartCoroutine("Exit");
                 break;
             default:
                 break;
+        }
+        RandomMove();
+    }
+
+    private IEnumerator Exit()
+    {
+        float tmp = speed;
+        speed = 0;
+        animator.SetBool("Idle", false);
+        animator.SetBool("Exit", true);
+
+        yield return new WaitForSeconds(0.5f);    // 퇴장 애니메이션 시간으로 설정하기
+        ObjectPool.instance.ReturnObject(this.gameObject);
+        currentState = States.Idle;
+        if(gameObject.CompareTag("Enemy"))
+            DropItem();
+        speed = tmp;
+    }
+
+    private void DropItem()
+    {
+        int random = Random.Range(0, 10);
+
+        if (random == 0 || random == 1 || random == 2)
+        {
+            GameObject item = ObjectPool.instance.GetObject("item");
+            item.transform.position = this.gameObject.transform.position;
         }
     }
 

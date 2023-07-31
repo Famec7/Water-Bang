@@ -8,23 +8,34 @@ public class SpecialEnemy4 : Character
     private float radius;
     [SerializeField]
     private float power;
+    [SerializeField]
+    private float attackTime;
     protected override void Awake()
     {
         base.Awake();
     }
+    private void Start()
+    {
+        StartCoroutine("Attack");
+    }
     protected override void Update()
     {
         base.Update();
-        Attack();
     }
 
-    private void Attack()
+    private IEnumerator Attack()
     {
-        Collider[] collider = Physics.OverlapSphere(this.transform.position, radius);
-        foreach (Collider col in collider)
+        while (true)
         {
-            if (col.gameObject.name == "Npc")
-                col.gameObject.GetComponent<NPC>().Patience -= power;
+
+            Collider2D[] collider = Physics2D.OverlapCircleAll(this.transform.position, radius);
+            foreach (Collider2D col in collider)
+            {
+                if (col.gameObject.CompareTag("Npc"))
+                    col.gameObject.GetComponent<NPC>().Patience -= power;
+            }
+
+            yield return new WaitForSeconds(attackTime);
         }
     }
 

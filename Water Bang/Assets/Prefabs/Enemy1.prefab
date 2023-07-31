@@ -15,8 +15,13 @@ GameObject:
   - component: {fileID: 5347056217954737215}
   - component: {fileID: 267972401857716097}
   m_Layer: 0
-  m_Name: Enemy1
+<<<<<<<< Updated upstream:Water Bang/Assets/Prefabs/Enemy.prefab
+  m_Name: Enemy
   m_TagString: Untagged
+========
+  m_Name: Enemy1
+  m_TagString: Enemy
+>>>>>>>> Stashed changes:Water Bang/Assets/Prefabs/Character/Enemy1.prefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,7 +39,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+<<<<<<<< Updated upstream:Water Bang/Assets/Prefabs/Enemy.prefab
+  m_RootOrder: 4
+========
+  m_RootOrder: 0
+>>>>>>>> Stashed changes:Water Bang/Assets/Prefabs/Character/Enemy1.prefab
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4215737912630627546
 SpriteRenderer:

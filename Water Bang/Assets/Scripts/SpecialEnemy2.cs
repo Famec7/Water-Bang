@@ -12,24 +12,26 @@ public class SpecialEnemy2 : Character
     {
         base.Awake();
     }
-
     private void Start()
     {
         StartCoroutine("Spawn");
     }
-
     protected override void Update()
     {
         base.Update();
     }
     private IEnumerator Spawn()
     {
-        yield return new WaitForSeconds(responeTime);
-        for (int i = 0; i < spawnNumber; i++)
+        while (true)
         {
-            GameObject enemy = ObjectPool.instance.GetObject("enemy");
-            // 적 스폰 방식은 주어진 반지름 안에서 랜덤으로 생성
-            enemy.gameObject.transform.position = GetPosition();
+            yield return new WaitForSeconds(responeTime);
+            for (int i = 0; i < spawnNumber; i++)
+            {
+                GameObject enemy = ObjectPool.instance.GetObject("enemy");
+                // 적 스폰 방식은 주어진 반지름 안에서 랜덤으로 생성
+                enemy.gameObject.transform.position = GetPosition();
+                Debug.Log("Spawn");
+            }
         }
     }
 
