@@ -62,7 +62,7 @@ public class Character : MonoBehaviour
     protected virtual void Awake()
     {
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<spriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         moveDelay = fixedDelay;
         transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
         CreateNewTransform();
