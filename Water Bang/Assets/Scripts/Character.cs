@@ -116,6 +116,7 @@ public class Character : MonoBehaviour
         {
             GameObject item = ObjectPool.instance.GetObject("item");
             item.transform.position = this.gameObject.transform.position;
+            Debug.Log("Drop Item");
         }
     }
 

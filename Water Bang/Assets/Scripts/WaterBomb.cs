@@ -9,27 +9,52 @@ public class WaterBomb : Item
     private Vector3 mousePoint;
 
     public GameObject range;
+    public GameObject splashPrefab;
+
+    private AudioSource audioSource;
+    public AudioClip clip;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        range = transform.GetChild(0).gameObject;
+        range.SetActive(false);
+    }
 
     public override void UseItem()
     {
         mousePoint = Input.mousePosition;
         mousePoint = Camera.main.ScreenToWorldPoint(mousePoint);
-        range.transform.position = new Vector3(mousePoint.x, mousePoint.y, 0);
+        mousePoint = new Vector3 (mousePoint.x, mousePoint.y, 0);
+        range.transform.position = mousePoint;
         range.transform.localScale = new Vector3(radius * 2, radius * 2, 0);
         range.SetActive(true);
         if (Input.GetMouseButtonUp(0))
         {
-            Collider2D[] colls = Physics2D.OverlapCircleAll(mousePoint, radius);
-
-            foreach (Collider2D col in colls)
-            {
-                if (col.CompareTag("Enemy"))
-                {
-                    Debug.Log("Bomb");
-                    col.gameObject.GetComponent<Character>().currentState = States.Exit;
-                }
-            }
             range.SetActive(false);
+            GameObject splash = Instantiate(splashPrefab, mousePoint, transform.rotation);
+            StartCoroutine("Attack");
         }
+    }
+
+    private IEnumerator Attack()
+    {
+        audioSource.PlayOneShot(clip);
+        Collider2D[] colls = Physics2D.OverlapCircleAll(mousePoint, radius);
+
+        foreach (Collider2D col in colls)
+        {
+            if (col.CompareTag("Enemy"))
+            {
+                col.gameObject.GetComponent<Character>().currentState = States.Exit;
+            }
+        }
+        range.SetActive(false);
+
+        yield return new WaitForSeconds(0.8f);
     }
 }

@@ -103,7 +103,7 @@ public class ObjectPool : MonoBehaviour
         }
         for(int i = 0; i < ItemCount; i++)
         {
-            GameObject newObj = CreateObject("Item");
+            GameObject newObj = CreateObject("item");
             ItemPool.Add(newObj);
         }
     }
@@ -147,7 +147,7 @@ public class ObjectPool : MonoBehaviour
                 newObj = Instantiate(specialEnemy4Prefab);
                 newObj.SetActive(false);
                 break;
-            case "Item":
+            case "item":
                 int rand = Random.Range(0, 3);
                 if (rand == 0)
                     newObj = Instantiate(whistlePrefab);
@@ -186,7 +186,7 @@ public class ObjectPool : MonoBehaviour
             case "specialEnemy4":
                 pool = specialEnemy4Pool;
                 break;
-            case "Item":
+            case "item":
                 pool = ItemPool;
                 break;
             default: break;

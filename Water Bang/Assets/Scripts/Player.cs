@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Whistle w;
-    public WaterBomb bomb;
+    private Whistle whistle;
+    private WaterBomb bomb;
 
     private void Awake()
     {
-        bomb.range = transform.GetChild(0).gameObject;
-        bomb.range.SetActive(false);
+        whistle = GetComponent<Whistle>();
+        bomb = GetComponent<WaterBomb>();
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            w.UseItem();
+            whistle.UseItem();
         else if (Input.GetKey(KeyCode.Alpha2))
             bomb.UseItem();
         else
