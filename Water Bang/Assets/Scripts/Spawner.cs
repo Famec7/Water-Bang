@@ -41,11 +41,11 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-            StartCoroutine(SpawnEnemy("npc"));
-            StartCoroutine(SpawnEnemy("enemy"));
-            StartCoroutine(SpawnEnemy("specialEnemy1"));
-            StartCoroutine(SpawnEnemy("specialEnemy2"));
-            StartCoroutine(SpawnEnemy("specialEnemy3"));
-            StartCoroutine(SpawnEnemy("specialEnemy4"));
+        StartCoroutine(SpawnEnemy("npc"));
+        StartCoroutine(SpawnEnemy("enemy"));
+        StartCoroutine(SpawnEnemy("specialEnemy1"));
+        StartCoroutine(SpawnEnemy("specialEnemy2"));
+        StartCoroutine(SpawnEnemy("specialEnemy3"));
+        StartCoroutine(SpawnEnemy("specialEnemy4"));
     }
 }

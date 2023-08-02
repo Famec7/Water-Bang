@@ -142,12 +142,14 @@ public class Character : MonoBehaviour
     {
         if (collision.collider.CompareTag("TopStage"))
         {
-            movePosition.transform.position = Vector3.zero;
+            movePosition.transform.position = new Vector2(Random.Range(minX / 3, maxX / 3), Random.Range(minY / 3, maxY / 3));
+            spriteRenderer.flipX = IsFlip();
             moveDelay = fixedDelay;
         }
         else if (collision.collider.CompareTag("BottomStage"))
         {
-            movePosition.transform.position = Vector3.zero;
+            movePosition.transform.position = new Vector2(Random.Range(minX / 3, maxX / 3), Random.Range(minY / 3, maxY / 3));
+            spriteRenderer.flipX = IsFlip();
             moveDelay = fixedDelay;
         }
     }

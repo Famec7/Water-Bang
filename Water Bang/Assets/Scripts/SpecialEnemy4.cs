@@ -27,12 +27,11 @@ public class SpecialEnemy4 : Character
     {
         while (true)
         {
-
             Collider2D[] collider = Physics2D.OverlapCircleAll(this.transform.position, radius);
             foreach (Collider2D col in collider)
             {
                 if (col.gameObject.CompareTag("Npc"))
-                    col.gameObject.GetComponent<NPC>().Patience -= power;
+                    col.gameObject.GetComponent<NPC>().Patience -= power;   // 게임매니저에 있는 점수를 감점하는 방식으로 변경하기
             }
 
             yield return new WaitForSeconds(attackTime);
