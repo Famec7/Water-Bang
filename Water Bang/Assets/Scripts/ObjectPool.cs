@@ -7,12 +7,18 @@ public class ObjectPool : MonoBehaviour
     public static ObjectPool instance;
 
     [SerializeField]
-    private GameObject npcPrefab;
+    private GameObject npc1Prefab;
+    [SerializeField]
+    private GameObject npc2Prefab;
     private List<GameObject> npcPool;
     public int npcCount;
 
     [SerializeField]
-    private GameObject enemyPrefab;
+    private GameObject enemy1Prefab;
+    [SerializeField]
+    private GameObject enemy2Prefab;
+    [SerializeField]
+    private GameObject enemy3Prefab;
     private List<GameObject> enemyPool;
     public int enemyCount;
 
@@ -36,11 +42,20 @@ public class ObjectPool : MonoBehaviour
     private List<GameObject> specialEnemy4Pool;
     public int specialEnemy4Count;
 
+    [SerializeField]
+    private GameObject whistlePrefab;
+    [SerializeField]
+    private GameObject waterBombPrefab;
+    [SerializeField]
+    private GameObject energyDrinkPrefab;
+    private List<GameObject> ItemPool;
+    public int ItemCount;
+
     private List<GameObject> pool;
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
             instance = this;
         else
             Destroy(instance);
@@ -55,6 +70,7 @@ public class ObjectPool : MonoBehaviour
         specialEnemy2Pool = new List<GameObject>();
         specialEnemy3Pool = new List<GameObject>();
         specialEnemy4Pool = new List<GameObject>();
+        ItemPool = new List<GameObject>();
         for (int i = 0; i < npcCount; i++)
         {
             GameObject newObj = CreateObject("npc");
@@ -85,6 +101,11 @@ public class ObjectPool : MonoBehaviour
             GameObject newObj = CreateObject("specialEnemy4");
             specialEnemy4Pool.Add(newObj);
         }
+        for (int i = 0; i < ItemCount; i++)
+        {
+            GameObject newObj = CreateObject("item");
+            ItemPool.Add(newObj);
+        }
     }
 
     private GameObject CreateObject(string type)
@@ -93,14 +114,24 @@ public class ObjectPool : MonoBehaviour
         switch (type)
         {
             case "npc":
-                newObj = Instantiate(npcPrefab);
+                int num = Random.Range(1, 3);
+                if (num == 1)
+                    newObj = Instantiate(npc1Prefab);
+                else if (num == 2)
+                    newObj = Instantiate(npc2Prefab);
                 newObj.SetActive(false);
                 break;
             case "enemy":
-                newObj = Instantiate(enemyPrefab);
+                num = Random.Range(1, 4);
+                if (num == 1)
+                    newObj = Instantiate(enemy1Prefab);
+                else if (num == 2)
+                    newObj = Instantiate(enemy2Prefab);
+                else if (num == 3)
+                    newObj = Instantiate(enemy3Prefab);
                 newObj.SetActive(false);
                 break;
-            case "spcialEnemy1":
+            case "specialEnemy1":
                 newObj = Instantiate(specialEnemy1Prefab);
                 newObj.SetActive(false);
                 break;
@@ -116,6 +147,16 @@ public class ObjectPool : MonoBehaviour
                 newObj = Instantiate(specialEnemy4Prefab);
                 newObj.SetActive(false);
                 break;
+            case "item":
+                int rand = Random.Range(0, 3);
+                if (rand == 0)
+                    newObj = Instantiate(whistlePrefab);
+                else if (rand == 1)
+                    newObj = Instantiate(waterBombPrefab);
+                else if (rand == 2)
+                    newObj = Instantiate(energyDrinkPrefab);
+                newObj.SetActive(false);
+                break;
             default: break;
         }
 
@@ -125,7 +166,7 @@ public class ObjectPool : MonoBehaviour
     // GetObject 호출 시 활성화된 오브젝트를 리턴(따로 활성화할 필요X)
     public GameObject GetObject(string type)
     {
-        switch(type)
+        switch (type)
         {
             case "npc":
                 pool = npcPool;
@@ -133,7 +174,7 @@ public class ObjectPool : MonoBehaviour
             case "enemy":
                 pool = enemyPool;
                 break;
-            case "spcialEnemy1":
+            case "specialEnemy1":
                 pool = specialEnemy1Pool;
                 break;
             case "specialEnemy2":
@@ -144,6 +185,9 @@ public class ObjectPool : MonoBehaviour
                 break;
             case "specialEnemy4":
                 pool = specialEnemy4Pool;
+                break;
+            case "item":
+                pool = ItemPool;
                 break;
             default: break;
         }
@@ -164,5 +208,27 @@ public class ObjectPool : MonoBehaviour
     public void ReturnObject(GameObject obj)
     {
         obj.gameObject.SetActive(false);
+    }
+
+    public void Reset()
+    {
+        foreach (GameObject obj in npcPool)
+            if (obj.activeSelf)
+                obj.SetActive(false);
+        foreach (GameObject obj in enemyPool)
+            if (obj.activeSelf)
+                obj.SetActive(false);
+        foreach (GameObject obj in specialEnemy1Pool)
+            if (obj.activeSelf)
+                obj.SetActive(false);
+        foreach (GameObject obj in specialEnemy2Pool)
+            if (obj.activeSelf)
+                obj.SetActive(false);
+        foreach (GameObject obj in specialEnemy3Pool)
+            if (obj.activeSelf)
+                obj.SetActive(false);
+        foreach (GameObject obj in specialEnemy4Pool)
+            if (obj.activeSelf)
+                obj.SetActive(false);
     }
 }
