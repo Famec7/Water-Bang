@@ -30,9 +30,6 @@ public class Character : MonoBehaviour
     private void CreateNewTransform()
     {
         movePosition = Instantiate(transformPrefab);
-        /*GameObject temp = Instantiate(transformPrefab);
-        temp.transform.SetParent(this.transformPrefab.transform, false);
-        movePosition = temp;*/
     }
 
     private bool IsFlip()
@@ -52,11 +49,6 @@ public class Character : MonoBehaviour
     public void DestroyCharacter()
     {
         ObjectPool.instance.ReturnObject(this.gameObject);
-    }
-
-    private void OnMouseDown()
-    {
-        DestroyCharacter();
     }
 
     protected virtual void Awake()
@@ -115,8 +107,8 @@ public class Character : MonoBehaviour
         if (random == 0 || random == 1 || random == 2)
         {
             GameObject item = ObjectPool.instance.GetObject("item");
-            item.transform.position = this.gameObject.transform.position;
-            Debug.Log("Drop Item");
+            if(item != null)
+                item.transform.position = this.gameObject.transform.position;
         }
     }
 
