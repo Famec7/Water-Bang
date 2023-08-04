@@ -131,19 +131,15 @@ public class Character : MonoBehaviour
         }
     }
 
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.collider.CompareTag("TopStage"))
+        if (collider.CompareTag("TopStage"))
         {
-            movePosition.transform.position = new Vector2(Random.Range(minX / 3, maxX / 3), Random.Range(minY / 3, maxY / 3));
-            spriteRenderer.flipX = IsFlip();
-            moveDelay = fixedDelay;
+            movePosition.transform.position = new Vector2(Random.Range(minX, maxX), 0);
         }
-        else if (collision.collider.CompareTag("BottomStage"))
+        else if (collider.CompareTag("BottomStage"))
         {
-            movePosition.transform.position = new Vector2(Random.Range(minX / 3, maxX / 3), Random.Range(minY / 3, maxY / 3));
-            spriteRenderer.flipX = IsFlip();
-            moveDelay = fixedDelay;
+            movePosition.transform.position = new Vector2(Random.Range(minX, maxX), 0);
         }
     }
 }

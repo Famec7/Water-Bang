@@ -51,6 +51,11 @@ public class ObjectPool : MonoBehaviour
     private List<GameObject> ItemPool;
     public int ItemCount;
 
+    [SerializeField]
+    private GameObject waterPrefab;
+    private List<GameObject> waterDrops;
+    public int waterDropCount;
+
     private List<GameObject> pool;
 
     private void Awake()
@@ -71,6 +76,7 @@ public class ObjectPool : MonoBehaviour
         specialEnemy3Pool = new List<GameObject>();
         specialEnemy4Pool = new List<GameObject>();
         ItemPool = new List<GameObject>();
+        waterDrops = new List<GameObject>();
         for (int i = 0; i < npcCount; i++)
         {
             GameObject newObj = CreateObject("npc");
@@ -105,6 +111,11 @@ public class ObjectPool : MonoBehaviour
         {
             GameObject newObj = CreateObject("item");
             ItemPool.Add(newObj);
+        }
+        for(int i = 0; i < waterDropCount; i++)
+        {
+            GameObject newObj = CreateObject("waterDrop");
+            waterDrops.Add(newObj);
         }
     }
 
@@ -157,6 +168,10 @@ public class ObjectPool : MonoBehaviour
                     newObj = Instantiate(energyDrinkPrefab);
                 newObj.SetActive(false);
                 break;
+            case "waterDrop":
+                newObj = Instantiate(waterPrefab);
+                newObj.SetActive(false);
+                break;
             default: break;
         }
 
@@ -188,6 +203,9 @@ public class ObjectPool : MonoBehaviour
                 break;
             case "item":
                 pool = ItemPool;
+                break;
+            case "waterDrop":
+                pool = waterDrops;
                 break;
             default: break;
         }

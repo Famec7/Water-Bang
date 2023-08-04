@@ -8,9 +8,12 @@ public class SpecialEnemy2 : Character
     [SerializeField] private float spawnNumber;
     [SerializeField] private float radius;
 
+    private AudioSource sfx;
+
     protected override void Awake()
     {
         base.Awake();
+        sfx = GetComponent<AudioSource>();
     }
     private void Start()
     {
@@ -29,8 +32,8 @@ public class SpecialEnemy2 : Character
             {
                 GameObject enemy = ObjectPool.instance.GetObject("enemy");
                 // 적 스폰 방식은 주어진 반지름 안에서 랜덤으로 생성
+                sfx.PlayOneShot(sfx.clip);
                 enemy.gameObject.transform.position = GetPosition();
-                Debug.Log("Spawn");
             }
         }
     }
@@ -50,8 +53,8 @@ public class SpecialEnemy2 : Character
         return enemyPosition;
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collider)
     {
-        base.OnCollisionEnter2D(collision);
+        base.OnTriggerEnter2D(collider);
     }
 }

@@ -38,8 +38,8 @@ public class SpecialEnemy4 : Character
         }
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collider)
     {
-        base.OnCollisionEnter2D(collision);
+        base.OnTriggerEnter2D(collider);
     }
 }
