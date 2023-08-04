@@ -17,14 +17,9 @@ public class Character : MonoBehaviour
     public float scale;
     public float speed;
     private float fixedDelay = 0.1f;
-<<<<<<< Updated upstream
-    private float minX = -0.7f, maxX = 0.7f;
-    private float minY = -0.7f, maxY = 0.7f;
-=======
     private float minX = 0f, maxX = 1f;
     private float minY = 0f, maxY = 1f;
     private SpriteRenderer spriteRenderer;
->>>>>>> Stashed changes
 
     private GameObject movePosition;
     private float moveDelay;
@@ -56,14 +51,9 @@ public class Character : MonoBehaviour
         ObjectPool.instance.ReturnObject(this.gameObject);
     }
 
-    private void OnMouseDown()
-    {
-        DestroyCharacter();
-    }
-
     protected virtual void Awake()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         moveDelay = fixedDelay;
         transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
@@ -80,6 +70,7 @@ public class Character : MonoBehaviour
 
     protected virtual void Update()
     {
+        /*
         switch (currentState)
         {
             case States.Idle:
@@ -91,7 +82,7 @@ public class Character : MonoBehaviour
                 break;
             default:
                 break;
-        }
+        }*/
         RandomMove();
     }
 
@@ -99,13 +90,14 @@ public class Character : MonoBehaviour
     {
         float tmp = speed;
         speed = 0;
+        /*
         animator.SetBool("Idle", false);
         animator.SetBool("Exit", true);
-
+        */
         yield return new WaitForSeconds(0.5f);    // 퇴장 애니메이션 시간으로 설정하기
         ObjectPool.instance.ReturnObject(this.gameObject);
         currentState = States.Idle;
-        if(gameObject.CompareTag("Enemy"))
+        if (gameObject.CompareTag("Enemy"))
             DropItem();
         speed = tmp;
     }
@@ -117,8 +109,8 @@ public class Character : MonoBehaviour
         if (random == 0 || random == 1 || random == 2)
         {
             GameObject item = ObjectPool.instance.GetObject("item");
-            item.transform.position = this.gameObject.transform.position;
-            Debug.Log("Drop Item");
+            if (item != null)
+                item.transform.position = this.gameObject.transform.position;
         }
     }
 

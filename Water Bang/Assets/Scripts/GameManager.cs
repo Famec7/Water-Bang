@@ -27,9 +27,12 @@ public class GameManager : MonoBehaviour
 
     public void OnClickRestartButton() { SceneManager.LoadScene(1); }
     public void GoToOverScene() { SceneManager.LoadScene(2); }
-    public void ButtonStage1() { SceneManager.LoadScene(3); }
-    public void ButtonStage2() { SceneManager.LoadScene(4); }
-    public void ButtonStage3() { SceneManager.LoadScene(5); }
+    public void ButtonStage1() {
+        SceneManager.LoadScene(3, LoadSceneMode.Additive);
+        SelectScreen.SetActive(false);
+    }
+    public void ButtonStage2() { SceneManager.LoadScene(4, LoadSceneMode.Additive); }
+    public void ButtonStage3() { SceneManager.LoadScene(5, LoadSceneMode.Additive); }
 
     void Update()
     {

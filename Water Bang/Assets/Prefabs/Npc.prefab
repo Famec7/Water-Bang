@@ -50,6 +50,7 @@ MonoBehaviour:
   transformPrefab: {fileID: 1136586131887147673, guid: b30bf0c310dab3640b2a33bb991cd1f3, type: 3}
   scale: 1
   speed: 5
+  currentState: 0
   patience: 30
   amountPertick: 5
 --- !u!212 &5257859793373064296
@@ -119,6 +120,7 @@ MonoBehaviour:
   transformPrefab: {fileID: 0}
   scale: 1
   speed: 5
+  currentState: 0
   patience: 30
   amountPertick: 1
 --- !u!61 &6668621557290137549

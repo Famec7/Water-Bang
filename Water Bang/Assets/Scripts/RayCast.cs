@@ -40,7 +40,7 @@ public class RayCast : MonoBehaviour
                         scoreManager.GetComponent<ScoreManager>().Score += 5 + 10 * scoreManager.GetComponent<ScoreManager>().combo++;
                         Debug.Log(scoreManager.GetComponent<ScoreManager>().combo);
                     }
-                    if (hit.collider.tag == "NPC")
+                    if (hit.collider.tag == "Npc")
                     {
                         hit.collider.gameObject.GetComponent<Character>().currentState = States.Exit;
                         scoreManager.GetComponent<ScoreManager>().Score -= 5;
