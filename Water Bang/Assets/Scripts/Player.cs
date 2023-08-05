@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     private Vector3 mousePoint;
     private Animator animator;
 
+    public int whistleCount = 0;
+    public int bombCount = 0;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -21,10 +24,16 @@ public class Player : MonoBehaviour
         mousePoint = Input.mousePosition;
         mousePoint = Camera.main.ScreenToWorldPoint(mousePoint);
         mousePoint = new Vector3(mousePoint.x, mousePoint.y, 0);
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && whistleCount > 0)
+        {
             whistle.UseItem();
+            whistleCount--;
+        }
         else if (Input.GetKey(KeyCode.Alpha2))
+        {
             bomb.UseItem();
+            bombCount--;
+        }
         else if (Input.GetMouseButton(0))
         {
             Shoot();

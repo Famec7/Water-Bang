@@ -152,12 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c46a5976cd4434f965ef2bf3f6ddc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcRespawnDelay: 0
-  enemyRespawnDelay: 3
-  specialEnemy1RespawnDelay: 0
-  specialEnemy2RespawnDelay: 0
-  specialEnemy3RespawnDelay: 0
-  specialEnemy4RespawnDelay: 0
+  npcRespawnDelay: 5
+  enemyRespawnDelay: 5
+  specialEnemy1RespawnDelay: 5
+  specialEnemy2RespawnDelay: 5
+  specialEnemy3RespawnDelay: 5
+  specialEnemy4RespawnDelay: 5
 --- !u!4 &358779807
 Transform:
   m_ObjectHideFlags: 0
@@ -202,25 +202,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344acda4ebd7a454a99b58d05823d79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npc1Prefab: {fileID: 2283397531042146865, guid: 13681d5e45ee7dc4386225ed24cb1fa9, type: 3}
-  npc2Prefab: {fileID: 2283397531042146865, guid: 13681d5e45ee7dc4386225ed24cb1fa9, type: 3}
-  npcCount: 0
-  enemy1Prefab: {fileID: 7287813176440309464, guid: 08afd44b6aa016448aa9e6e0c8d65b86, type: 3}
-  enemy2Prefab: {fileID: 7287813176440309464, guid: 08afd44b6aa016448aa9e6e0c8d65b86, type: 3}
-  enemy3Prefab: {fileID: 7287813176440309464, guid: 08afd44b6aa016448aa9e6e0c8d65b86, type: 3}
-  enemyCount: 1
+  npc1Prefab: {fileID: 2283397531042146865, guid: 190b522fecb16cd4d90000d71d794aa5, type: 3}
+  npc2Prefab: {fileID: 2283397531042146865, guid: 7ea201fbda1d45040be2f31bba6f5908, type: 3}
+  npcCount: 50
+  enemy1Prefab: {fileID: 7287813176440309464, guid: e485f1f2b1f7f3c4d9c2b937f7a68b4f, type: 3}
+  enemy2Prefab: {fileID: 7287813176440309464, guid: f9dbecf9cf9d9b745a2b997297418141, type: 3}
+  enemy3Prefab: {fileID: 7287813176440309464, guid: 62da41483bec1064a8a044c945be0877, type: 3}
+  enemyCount: 30
   specialEnemy1Prefab: {fileID: 5974108953350820026, guid: 4f627d57c3710cf4795b703bad621d3d, type: 3}
-  specialEnemy1Count: 0
-  specialEnemy2Prefab: {fileID: 1017445400130602231, guid: d662102993cadbf49a8d034c567175a6, type: 3}
-  specialEnemy2Count: 0
+  specialEnemy1Count: 3
+  specialEnemy2Prefab: {fileID: 5974108953350820026, guid: 6dae8ab828046eb4e987803b2b124090, type: 3}
+  specialEnemy2Count: 3
   specialEnemy3Prefab: {fileID: 489410436617930548, guid: 36cf4605d87b78a4d8ceb83ccbb708ce, type: 3}
-  specialEnemy3Count: 0
-  specialEnemy4Prefab: {fileID: 4711877880269991136, guid: 1634a83749f49784b9d0e260c538a9db, type: 3}
-  specialEnemy4Count: 0
-  whistlePrefab: {fileID: 0}
-  waterBombPrefab: {fileID: 0}
-  energyDrinkPrefab: {fileID: 0}
-  ItemCount: 0
+  specialEnemy3Count: 3
+  specialEnemy4Prefab: {fileID: 489410436617930548, guid: ac01a4a5739e6e6478e46dc072260a69, type: 3}
+  specialEnemy4Count: 3
+  whistlePrefab: {fileID: 664957823403954248, guid: aad48f5e4cfab5849bab93c5e1d2063a, type: 3}
+  waterBombPrefab: {fileID: 7654132609752765308, guid: cd5aa0ec9c7cfc247ab784f4b92be88d, type: 3}
+  energyDrinkPrefab: {fileID: 2051076629501530822, guid: 2c7f3060cb4c28d44a4774bfbe23543d, type: 3}
+  ItemCount: 10
+  waterPrefab: {fileID: 7843594667010036933, guid: 3ce866289694667449871f5072ea3356, type: 3}
+  waterDropCount: 120
 --- !u!4 &1417105944
 Transform:
   m_ObjectHideFlags: 0
