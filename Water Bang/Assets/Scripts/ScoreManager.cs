@@ -24,13 +24,39 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public int combo = 0;
-    private int deltaCombo;
-    private int resetCombo;
+    private int combo = 0;
+    public int Combo
+    {
+        get { return combo; }
+        set {
+            if (value > 10) combo = 10;
+            else combo = value;
+        }
+    }
+
+    float comboTime = 0f;
+    float breakTime = 5f;
+    public bool isComboUp = false;
+
+    private IEnumerator Timer(float currentTime)
+    {
+        yield return null;
+        if (isComboUp){ currentTime = 0f; isComboUp = false; }
+        else currentTime += Time.deltaTime;
+
+        if (currentTime >= breakTime)
+        {
+            currentTime = 0f;
+            Combo = 0;
+        }
+
+        //Debug.Log(currentTime);
+        StartCoroutine(Timer(currentTime));
+    }
 
     private IEnumerator StaticDecrease()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSeconds(1f);
         score -= staticDecay;
         Debug.Log(score);
         StartCoroutine(StaticDecrease());
@@ -39,6 +65,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(StaticDecrease());
+        StartCoroutine(Timer(comboTime));
     }
 
     void Update()

@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
         else { Destroy(gameObject); }
     }
 
-    [SerializeField]
-    GameObject scoreManager;
     public GameObject StartScreen;
     public GameObject SelectScreen;
 
@@ -36,6 +34,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (scoreManager.GetComponent<ScoreManager>().Score <= 0) GoToOverScene();
+        if (this.GetComponent<ScoreManager>().Score <= 0) GoToOverScene();
     }
 }
