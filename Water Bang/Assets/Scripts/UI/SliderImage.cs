@@ -21,8 +21,6 @@ public class SliderImage : MonoBehaviour
     private void Update()
     {
         int currentScore = (int)(ScoreManager.instance.Score / maxScore * 10);
-
-        Debug.Log("rate" + currentScore);
         satisfactionImage.sprite = satisfactionImages[currentScore];
     }
 }

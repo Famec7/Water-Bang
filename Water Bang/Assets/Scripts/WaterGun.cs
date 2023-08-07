@@ -6,7 +6,7 @@ public class WaterGun : MonoBehaviour
 {
     private int reloadDelay = 3;
     public int waterTank = 100;
-    private int waterQuantity;
+    public int waterQuantity;
     public bool isReloading = false;
     [SerializeField]
     GameObject pause;

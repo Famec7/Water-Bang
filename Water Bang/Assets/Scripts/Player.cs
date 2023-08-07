@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
     public int whistleCount = 0;
     public int bombCount = 0;
+    public int energyDrinkCount = 0;
 
     private void Awake()
     {

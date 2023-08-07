@@ -53,19 +53,18 @@ public class Character : MonoBehaviour
 
     protected virtual void Awake()
     {
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        moveDelay = fixedDelay;
-        transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-        CreateNewTransform();
-        movePosition.transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-        spriteRenderer.flipX = IsFlip();
-
         Vector3 minPos = Camera.main.ViewportToWorldPoint(new Vector3(minX, minY, 0));
         Vector3 maxPos = Camera.main.ViewportToWorldPoint(new Vector3(maxX, maxY, 0));
 
         minX = minPos.x; minY = minPos.y;
         maxX = maxPos.x; maxY = maxPos.y;
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        moveDelay = fixedDelay;
+        transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY / 3, maxY / 3));
+        CreateNewTransform();
+        movePosition.transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        spriteRenderer.flipX = IsFlip();
     }
 
     protected virtual void Update()
@@ -95,7 +94,7 @@ public class Character : MonoBehaviour
         yield return new WaitForSeconds(0.5f);    // 퇴장 애니메이션 시간으로 설정하기
         ObjectPool.instance.ReturnObject(this.gameObject);
         currentState = States.Idle;
-        if(gameObject.CompareTag("Enemy"))
+        if (gameObject.CompareTag("Enemy"))
             DropItem();
         speed = tmp;
     }
@@ -107,7 +106,7 @@ public class Character : MonoBehaviour
         if (random == 0 || random == 1 || random == 2)
         {
             GameObject item = ObjectPool.instance.GetObject("item");
-            if(item != null)
+            if (item != null)
                 item.transform.position = this.gameObject.transform.position;
         }
     }
