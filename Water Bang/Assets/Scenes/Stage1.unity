@@ -158,6 +158,12 @@ MonoBehaviour:
   specialEnemy2RespawnDelay: 5
   specialEnemy3RespawnDelay: 5
   specialEnemy4RespawnDelay: 5
+  npcCount: 30
+  enemyCount: 10
+  specialEnemy1Count: 0
+  specialEnemy2Count: 0
+  specialEnemy3Count: 0
+  specialEnemy4Count: 0
 --- !u!4 &358779807
 Transform:
   m_ObjectHideFlags: 0

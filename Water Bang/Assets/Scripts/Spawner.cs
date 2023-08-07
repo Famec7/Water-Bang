@@ -13,6 +13,13 @@ public class Spawner : MonoBehaviour
     public float specialEnemy3RespawnDelay;
     public float specialEnemy4RespawnDelay;
 
+    public int npcCount;
+    public int enemyCount;
+    public int specialEnemy1Count;
+    public int specialEnemy2Count;
+    public int specialEnemy3Count;
+    public int specialEnemy4Count;
+
     private IEnumerator SpawnEnemy(string type)
     {
         while (true)
@@ -41,11 +48,25 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnEnemy("npc"));
+        /*StartCoroutine(SpawnEnemy("npc"));
         StartCoroutine(SpawnEnemy("enemy"));
         StartCoroutine(SpawnEnemy("specialEnemy1"));
         StartCoroutine(SpawnEnemy("specialEnemy2"));
         StartCoroutine(SpawnEnemy("specialEnemy3"));
-        StartCoroutine(SpawnEnemy("specialEnemy4"));
+        StartCoroutine(SpawnEnemy("specialEnemy4"));*/
+
+        Spawn("npc", npcCount);
+        Spawn("enemy", enemyCount);
+        Spawn("specialEnemy1", specialEnemy1Count);
+        Spawn("specialEnemy2", specialEnemy2Count);
+        Spawn("specialEnemy3", specialEnemy3Count);
+        Spawn("specialEnemy4", specialEnemy4Count);
+    }
+
+    private void Spawn(string type, int count)
+    {
+        GameObject obj = null;
+        for (int i = 0; i < count; i++)
+            obj = ObjectPool.instance.GetObject(type);
     }
 }

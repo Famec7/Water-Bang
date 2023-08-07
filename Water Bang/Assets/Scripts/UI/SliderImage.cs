@@ -12,6 +12,7 @@ public class SliderImage : MonoBehaviour
     private void Awake()
     {
         satisfactionImage = GetComponent<Image>();
+        satisfactionImage.sprite = satisfactionImages[9];
     }
     private void Start()
     {
@@ -21,6 +22,7 @@ public class SliderImage : MonoBehaviour
     private void Update()
     {
         int currentScore = (int)(ScoreManager.instance.Score / maxScore * 10);
-        satisfactionImage.sprite = satisfactionImages[currentScore];
+        if (currentScore < 10)
+            satisfactionImage.sprite = satisfactionImages[currentScore];
     }
 }
