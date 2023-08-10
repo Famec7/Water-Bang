@@ -9,16 +9,22 @@ public class Player : MonoBehaviour
 
     private Vector3 mousePoint;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     public int whistleCount = 0;
     public int bombCount = 0;
     public int energyDrinkCount = 0;
+    Vector3 leftMuzzlePos;
+    Vector3 rightMuzzlePos;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         whistle = GetComponent<Whistle>();
         bomb = GetComponent<WaterBomb>();
+        leftMuzzlePos = this.transform.GetChild(1).transform.position;
+        rightMuzzlePos = this.transform.GetChild(2).transform.position;
     }
     private void Update()
     {
@@ -50,22 +56,27 @@ public class Player : MonoBehaviour
         GameObject waterDrop = ObjectPool.instance.GetObject("waterDrop");
         if (waterDrop != null)
         {
-            waterDrop.transform.position = this.gameObject.transform.position;
+            if (spriteRenderer.flipX)
+                waterDrop.transform.position = rightMuzzlePos;
+            else
+                waterDrop.transform.position = leftMuzzlePos;
             waterDrop.SetActive(true);
         }
     }
 
     private void SetAnimation()
     {
-        if(mousePoint.x < 0)
+        if (mousePoint.x < 0)
         {
-            animator.SetBool("LeftShoot", true);
-            animator.SetBool("RightShoot", false);
+            /*animator.SetBool("LeftShoot", true);
+            animator.SetBool("RightShoot", false);*/
+            spriteRenderer.flipX = false;
         }
         else
         {
-            animator.SetBool("LeftShoot", false);
-            animator.SetBool("RightShoot", true);
+            /*animator.SetBool("LeftShoot", false);
+            animator.SetBool("RightShoot", true);*/
+            spriteRenderer.flipX = true;
         }
     }
 }

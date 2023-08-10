@@ -22,7 +22,7 @@ public class SliderImage : MonoBehaviour
     private void Update()
     {
         int currentScore = (int)(ScoreManager.instance.Score / maxScore * 10);
-        if (currentScore < 10)
+        if (currentScore >= 0 && currentScore < 10)
             satisfactionImage.sprite = satisfactionImages[currentScore];
     }
 }

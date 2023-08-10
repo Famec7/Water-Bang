@@ -14,6 +14,6 @@ public class WaterUI : MonoBehaviour
     }
     private void Update()
     {
-        waterSlider.value = (float)waterGun.waterQuantity / waterGun.waterTank;
+        waterSlider.value = (float)GameManager.instance.waterGun.waterQuantity / GameManager.instance.waterGun.waterTank;
     }
 }
