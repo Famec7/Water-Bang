@@ -197,10 +197,12 @@ MonoBehaviour:
   transformPrefab: {fileID: 1136586131887147673, guid: b30bf0c310dab3640b2a33bb991cd1f3, type: 3}
   scale: 0.5
   speed: 3
+  hitClip: {fileID: 8300000, guid: d5342c82301939d4ca1250b4cc25d1e0, type: 3}
   currentState: 0
   radius: 50
   power: 3
   attackTime: 5
+  attackClip: {fileID: 8300000, guid: 37882eb87bc82da4399aed72c93003c1, type: 3}
 --- !u!82 &8545526707444762231
 AudioSource:
   m_ObjectHideFlags: 0
@@ -211,7 +213,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 37882eb87bc82da4399aed72c93003c1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

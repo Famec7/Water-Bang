@@ -11,7 +11,8 @@ public enum GameStates
     inMain,
     inSelect,
     pause,
-    gameOver
+    gameOver,
+    gameClear
 }
 
 public class GameManager : MonoBehaviour
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
     public GameObject inGameUI;
     public GameObject pauseUI;
     public GameObject gameOverUI;
+    public GameObject gameClearUI;
 
     // 시작화면
     public void MainScreen()
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
         StartScreen.SetActive(false);
         SelectScreen.SetActive(true);
         gameOverUI.SetActive(false);
+        gameClearUI.SetActive(false);
         SceneControl();
     }
 
@@ -106,6 +109,7 @@ public class GameManager : MonoBehaviour
     public void GoToOverScene()
     {
         currentState = GameStates.gameOver;
+        SoundManager.instance.audioBgm.Stop();
         SceneControl();
     }
 
@@ -125,7 +129,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (currentState == GameStates.gameOver) GoToOverScene();
+        if (!gameOverUI.activeSelf && (currentState == GameStates.gameOver || !SoundManager.instance.audioBgm.isPlaying))
+        {
+            currentState = GameStates.gameOver;
+            GoToOverScene();
+        }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -152,7 +160,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameStates.inSelect:
                 Time.timeScale = 0f;
-                SoundManager.instance.StopBgm();
+                SoundManager.instance.PlayMainBgm();
                 playerObject.SetActive(false);
                 inGameUI.SetActive(false);
                 pauseUI.SetActive(false);
@@ -162,7 +170,11 @@ public class GameManager : MonoBehaviour
                 break;
             case GameStates.gameOver:
                 Time.timeScale = 0f;
+                inGameUI.SetActive(false);
                 gameOverUI.SetActive(true);
+                SoundManager.instance.PlayGameOverSfx();
+                if (SceneManager.loadedSceneCount >= 2 && SceneManager.GetSceneAt(1).buildIndex == currentStage)
+                    SceneManager.UnloadSceneAsync(currentStage);
                 break;
             default:
                 break;
@@ -171,10 +183,10 @@ public class GameManager : MonoBehaviour
 
     private void Reset()
     {
-        ScoreManager.instance.Score = 50f;
+        ScoreManager.instance.Score = ScoreManager.instance.maxScore;
         waterGun.waterQuantity = waterGun.waterTank;
         player.bombCount = 0;
-        player.whistleCount = 0;
+        player.whistleCount = 30;
         player.energyDrinkCount = 0;
     }
 }

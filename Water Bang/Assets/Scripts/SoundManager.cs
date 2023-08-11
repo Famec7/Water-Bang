@@ -8,12 +8,15 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
     public AudioMixer audioMixer;
+
+    public AudioClip mainBgm;
     public AudioClip[] stageBgm;
 
     public AudioClip buttonSfx;
     public AudioClip startSfx;
+    public AudioClip gameOverClip;
 
-    private AudioSource audioBgm;
+    public AudioSource audioBgm;
     private AudioSource audioSfx;
 
     private void Awake()
@@ -28,13 +31,23 @@ public class SoundManager : MonoBehaviour
         audioMixer.SetFloat("Bgm", 0f);
         audioMixer.SetFloat("Sfx", 0f);
     }
+    public void PlayMainBgm()
+    {
+        if (audioBgm.clip == stageBgm[GameManager.instance.currentStage])
+            audioBgm.Stop();
+        if (!audioBgm.isPlaying)
+        {
+            audioBgm.loop = true;
+            audioBgm.clip = mainBgm;
+            audioBgm.Play();
+        }
+    }
     public void PlayBgm()
     {
-        audioBgm.PlayOneShot(stageBgm[GameManager.instance.currentStage]);
-    }
-    public void StopBgm()
-    {
         audioBgm.Stop();
+        audioBgm.loop = false;
+        audioBgm.clip = stageBgm[GameManager.instance.currentStage];
+        audioBgm.PlayOneShot(audioBgm.clip);
     }
     public void PlayButtonSfx()
     {
@@ -45,21 +58,17 @@ public class SoundManager : MonoBehaviour
         audioSfx.PlayOneShot(startSfx);
     }
 
+    public void PlayGameOverSfx()
+    {
+        audioBgm.PlayOneShot(gameOverClip);
+    }
     public void SetBgmVolume(float value)
     {
         audioMixer.SetFloat("Bgm", Mathf.Log10(value) * 20f);
-
-        float result;
-        audioMixer.GetFloat("Bgm", out result);
-        Debug.Log("Bgm" + result);
     }
 
     public void SetSfxVolume(float value)
     {
         audioMixer.SetFloat("Sfx", Mathf.Log10(value) * 20f);
-
-        float result;
-        audioMixer.GetFloat("Sfx", out result);
-        Debug.Log("Sfx" + result);
     }
 }

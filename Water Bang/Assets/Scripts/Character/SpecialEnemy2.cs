@@ -8,12 +8,11 @@ public class SpecialEnemy2 : Character
     [SerializeField] private float spawnNumber;
     [SerializeField] private float radius;
 
-    private AudioSource sfx;
+    public AudioClip attackClip;
 
     protected override void Awake()
     {
         base.Awake();
-        sfx = GetComponent<AudioSource>();
     }
     private void Start()
     {
@@ -28,11 +27,11 @@ public class SpecialEnemy2 : Character
         while (true)
         {
             yield return new WaitForSeconds(responeTime);
+            sfx.PlayOneShot(attackClip);
             for (int i = 0; i < spawnNumber; i++)
             {
                 GameObject enemy = ObjectPool.instance.GetObject("enemy");
                 // 적 스폰 방식은 주어진 반지름 안에서 랜덤으로 생성
-                sfx.PlayOneShot(sfx.clip);
                 enemy.gameObject.transform.position = GetPosition();
             }
         }

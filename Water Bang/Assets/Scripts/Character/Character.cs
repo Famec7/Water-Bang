@@ -25,6 +25,9 @@ public class Character : MonoBehaviour
     private float moveDelay;
     private Animator animator;
 
+    protected AudioSource sfx;
+    public AudioClip hitClip;
+
     public States currentState = States.Idle;
 
     private void CreateNewTransform()
@@ -46,13 +49,9 @@ public class Character : MonoBehaviour
         transform.localScale = new Vector3((1 + magScale) * scale, (1 + magScale) * scale);
     }
 
-    public void DestroyCharacter()
-    {
-        ObjectPool.instance.ReturnObject(this.gameObject);
-    }
-
     protected virtual void Awake()
     {
+        sfx = GetComponent<AudioSource>();
         Vector3 minPos = Camera.main.ViewportToWorldPoint(new Vector3(minX, minY, 0));
         Vector3 maxPos = Camera.main.ViewportToWorldPoint(new Vector3(maxX, maxY, 0));
 
@@ -88,14 +87,16 @@ public class Character : MonoBehaviour
     {
         float tmp = speed;
         speed = 0;
+        if(!sfx.isPlaying)
+            sfx.PlayOneShot(hitClip);
         animator.SetBool("Idle", false);
         animator.SetBool("Exit", true);
 
         yield return new WaitForSeconds(0.5f);    // 퇴장 애니메이션 시간으로 설정하기
         ObjectPool.instance.ReturnObject(this.gameObject);
-        currentState = States.Idle;
         if (gameObject.CompareTag("Enemy"))
             DropItem();
+        currentState = States.Idle;
         speed = tmp;
     }
 

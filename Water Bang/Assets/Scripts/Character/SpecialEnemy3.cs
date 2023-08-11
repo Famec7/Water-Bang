@@ -12,6 +12,8 @@ public class SpecialEnemy3 : Character
     private Sprite blurImage;
     private GameObject blur;
 
+    public AudioClip attackClip;
+
     protected override void Awake()
     {
         base.Awake();
@@ -31,14 +33,21 @@ public class SpecialEnemy3 : Character
 
     public IEnumerator Attack()
     {
-        // 공격X
-        blur.SetActive(false);
-        yield return new WaitForSeconds(attackTime);
+        while (true)
+        {
+            // 공격X
+            blur.SetActive(false);
 
-        // 공격O
-        blur.transform.localScale = this.gameObject.transform.localScale * 30;
-        blur.gameObject.GetComponent<SpriteRenderer>().sprite = blurImages[Random.Range(0, 2)];
-        blur.SetActive(true);
+            yield return new WaitForSeconds(attackTime);
+
+            // 공격O
+            sfx.PlayOneShot(attackClip);
+            blur.transform.localScale = this.gameObject.transform.localScale * 5;
+            blur.gameObject.GetComponent<SpriteRenderer>().sprite = blurImages[Random.Range(0, 2)];
+            blur.SetActive(true);
+
+            yield return new WaitForSeconds(attackDuration);
+        }
     }
 
     protected override void OnTriggerEnter2D(Collider2D collider)

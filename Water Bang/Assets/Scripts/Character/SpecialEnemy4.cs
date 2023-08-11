@@ -11,11 +11,11 @@ public class SpecialEnemy4 : Character
     [SerializeField]
     private float attackTime;
 
-    private AudioSource sfx;
+    public AudioClip attackClip;
+
     protected override void Awake()
     {
         base.Awake();
-        sfx = GetComponent<AudioSource>();
     }
     private void Start()
     {
@@ -30,7 +30,7 @@ public class SpecialEnemy4 : Character
     {
         while (true)
         {
-            sfx.PlayOneShot(sfx.clip);
+            sfx.PlayOneShot(attackClip);
             Collider2D[] collider = Physics2D.OverlapCircleAll(this.transform.position, radius);
             foreach (Collider2D col in collider)
             {

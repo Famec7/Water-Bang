@@ -14,6 +14,11 @@ public class Whistle : Item
     public override void UseItem()
     {
         audioSource.PlayOneShot(clip);
+    }
+
+    private IEnumerator ExitAll()
+    {
         ObjectPool.instance.Reset();
+        yield return new WaitForSeconds(5f);
     }
 }

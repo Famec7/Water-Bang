@@ -29,15 +29,16 @@ public class WaterBomb : Item
     {
         mousePoint = Input.mousePosition;
         mousePoint = Camera.main.ScreenToWorldPoint(mousePoint);
-        mousePoint = new Vector3 (mousePoint.x, mousePoint.y, 0);
+        mousePoint = new Vector3(mousePoint.x, mousePoint.y, 0);
         range.transform.position = mousePoint;
-        range.transform.localScale = new Vector3(radius * 2, radius * 2, 0);
+        range.transform.localScale = new Vector3(radius * 10, radius * 10, 0);
         range.SetActive(true);
         if (Input.GetMouseButtonUp(0))
         {
             range.SetActive(false);
             GameObject splash = Instantiate(splashPrefab, mousePoint, transform.rotation);
             StartCoroutine("Attack");
+            GameManager.instance.player.bombCount--;
         }
     }
 
