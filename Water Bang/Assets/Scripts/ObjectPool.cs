@@ -77,6 +77,14 @@ public class ObjectPool : MonoBehaviour
         specialEnemy4Pool = new List<GameObject>();
         ItemPool = new List<GameObject>();
         waterDrops = new List<GameObject>();
+
+        npcCount = GameManager.instance.npcCount;
+        enemyCount = GameManager.instance.enemyCount * 2;
+        specialEnemy1Count = GameManager.instance.specialEnemy1Count;
+        specialEnemy2Count = GameManager.instance.specialEnemy2Count;
+        specialEnemy3Count = GameManager.instance.specialEnemy3Count;
+        specialEnemy4Count = GameManager.instance.specialEnemy4Count;
+
         for (int i = 0; i < npcCount; i++)
         {
             GameObject newObj = CreateObject("npc");

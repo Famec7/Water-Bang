@@ -8,6 +8,12 @@ TagManager:
   - Stage
   - TopStage
   - BottomStage
+  - Water
+  - Npc
+  - Whistle
+  - WaterBomb
+  - EnergyDrink
+  - Item
   layers:
   - Default
   - TransparentFX

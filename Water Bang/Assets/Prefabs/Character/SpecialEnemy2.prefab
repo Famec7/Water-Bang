@@ -128,7 +128,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d07dbfb5cda7d12469645d0634673d0f, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -197,10 +197,12 @@ MonoBehaviour:
   transformPrefab: {fileID: 1136586131887147673, guid: b30bf0c310dab3640b2a33bb991cd1f3, type: 3}
   scale: 1
   speed: 3
+  hitClip: {fileID: 8300000, guid: d5342c82301939d4ca1250b4cc25d1e0, type: 3}
   currentState: 0
   responeTime: 5
   spawnNumber: 3
   radius: 1
+  attackClip: {fileID: 8300000, guid: 92c6b4ebac88a45419a1bb6ba921b8e3, type: 3}
 --- !u!82 &5975920345828881907
 AudioSource:
   m_ObjectHideFlags: 0

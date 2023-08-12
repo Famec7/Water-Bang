@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,217 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SatisfGageSheet_0
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 3477
+        width: 822
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1ff7795661eeba4fb1ec9fe287d2e19
+      internalID: -1684032997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SatisfGageSheet_1
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 3157
+        width: 822
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77d0dbc4971a56c459d49eaa4c762ead
+      internalID: 1631874071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SatisfGageSheet_2
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 2869
+        width: 822
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a41f8e53fe8f5d459de4ff4101d3f21
+      internalID: 1439241787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SatisfGageSheet_3
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 2549
+        width: 822
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fae2fa196df83fd48b84810bdaf815dd
+      internalID: -1996318632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SatisfGageSheet_4
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 2269
+        width: 822
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55d0e11cc04ed7a4fa4f9b6b215ca890
+      internalID: 1702060300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SatisfGageSheet_5
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 1989
+        width: 822
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1761004ae3fd02458fe693c9511e5ab
+      internalID: -665069447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SatisfGageSheet_6
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 1693
+        width: 822
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b69df8442b7f844e843ec3be887daba
+      internalID: 1084555497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SatisfGageSheet_7
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 1405
+        width: 822
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5c505e16b53a6c41ba8b18f8175c3b1
+      internalID: 695095628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SatisfGageSheet_8
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 1085
+        width: 822
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f3239bd39b11a4f862703ad8a50cad
+      internalID: 2842820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SatisfGageSheet_9
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 725
+        width: 822
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10ea6348557812640a3e5acdae4ae530
+      internalID: -1635187310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +329,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SatisfGageSheet_0: -1684032997
+      SatisfGageSheet_1: 1631874071
+      SatisfGageSheet_2: 1439241787
+      SatisfGageSheet_3: -1996318632
+      SatisfGageSheet_4: 1702060300
+      SatisfGageSheet_5: -665069447
+      SatisfGageSheet_6: 1084555497
+      SatisfGageSheet_7: 695095628
+      SatisfGageSheet_8: 2842820
+      SatisfGageSheet_9: -1635187310
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
