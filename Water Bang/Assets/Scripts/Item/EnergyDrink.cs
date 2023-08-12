@@ -13,8 +13,10 @@ public class EnergyDrink : Item
     }
     private IEnumerator InfinityMode()
     {
+        inUse = true;
         yield return new WaitForSeconds(5f);
         GameManager.instance.waterGun.isInfinite = false;
+        inUse = false;
     }
 
     public override void UseItem()

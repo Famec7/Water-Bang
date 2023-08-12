@@ -23,7 +23,7 @@ public class WaterDrop : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, mousePoint, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, mousePoint, speed * Time.unscaledDeltaTime);
 
         if (Vector2.Distance(transform.position, mousePoint) < 0.3)
         {

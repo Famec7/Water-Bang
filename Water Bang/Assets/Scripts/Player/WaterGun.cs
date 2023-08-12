@@ -23,7 +23,7 @@ public class WaterGun : MonoBehaviour
 
     private IEnumerator Reload()
     {
-        yield return new WaitForSeconds(reloadDelay);
+        yield return new WaitForSecondsRealtime(reloadDelay);
         Debug.Log("Reload Complete");
         FillWater();
         isReloading = false;

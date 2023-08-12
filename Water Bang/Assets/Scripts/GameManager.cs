@@ -185,8 +185,6 @@ public class GameManager : MonoBehaviour
     {
         ScoreManager.instance.Score = ScoreManager.instance.maxScore;
         waterGun.waterQuantity = waterGun.waterTank;
-        player.bombCount = 0;
-        player.whistleCount = 30;
-        player.energyDrinkCount = 0;
+        player.Reset();
     }
 }

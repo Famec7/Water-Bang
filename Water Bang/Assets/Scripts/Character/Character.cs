@@ -68,19 +68,22 @@ public class Character : MonoBehaviour
 
     protected virtual void Update()
     {
-        switch (currentState)
+        if (GameManager.instance.currentState == GameStates.inGame)
         {
-            case States.Idle:
-                animator.SetBool("Idle", true);
-                animator.SetBool("Exit", false);
-                break;
-            case States.Exit:
-                StartCoroutine("Exit");
-                break;
-            default:
-                break;
+            switch (currentState)
+            {
+                case States.Idle:
+                    animator.SetBool("Idle", true);
+                    animator.SetBool("Exit", false);
+                    break;
+                case States.Exit:
+                    StartCoroutine("Exit");
+                    break;
+                default:
+                    break;
+            }
+            RandomMove();
         }
-        RandomMove();
     }
 
     private IEnumerator Exit()
@@ -92,7 +95,7 @@ public class Character : MonoBehaviour
         animator.SetBool("Idle", false);
         animator.SetBool("Exit", true);
 
-        yield return new WaitForSeconds(0.5f);    // 퇴장 애니메이션 시간으로 설정하기
+        yield return new WaitForSecondsRealtime(0.5f);    // 퇴장 애니메이션 시간으로 설정하기
         ObjectPool.instance.ReturnObject(this.gameObject);
         if (gameObject.CompareTag("Enemy"))
             DropItem();

@@ -13,12 +13,17 @@ public class Whistle : Item
     }
     public override void UseItem()
     {
-        audioSource.PlayOneShot(clip);
+        StartCoroutine("ExitAll");
     }
 
     private IEnumerator ExitAll()
     {
-        ObjectPool.instance.Reset();
-        yield return new WaitForSeconds(5f);
+        inUse = true;
+        audioSource.PlayOneShot(clip);
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(2f);
+        Debug.Log("fin");
+        Time.timeScale = 1f;
+        inUse = false;
     }
 }

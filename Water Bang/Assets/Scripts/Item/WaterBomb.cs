@@ -44,6 +44,7 @@ public class WaterBomb : Item
 
     private IEnumerator Attack()
     {
+        inUse = true;
         audioSource.PlayOneShot(clip);
         Collider2D[] colls = Physics2D.OverlapCircleAll(mousePoint, radius);
 
@@ -57,5 +58,6 @@ public class WaterBomb : Item
         range.SetActive(false);
 
         yield return new WaitForSeconds(0.8f);
+        inUse = false;
     }
 }

@@ -161,7 +161,7 @@ MonoBehaviour:
   npcCount: 30
   enemyCount: 10
   specialEnemy1Count: 0
-  specialEnemy2Count: 0
+  specialEnemy2Count: 10
   specialEnemy3Count: 0
   specialEnemy4Count: 0
 --- !u!4 &358779807
@@ -323,7 +323,7 @@ MonoBehaviour:
   specialEnemy1Prefab: {fileID: 5974108953350820026, guid: 4f627d57c3710cf4795b703bad621d3d, type: 3}
   specialEnemy1Count: 3
   specialEnemy2Prefab: {fileID: 5974108953350820026, guid: 6dae8ab828046eb4e987803b2b124090, type: 3}
-  specialEnemy2Count: 3
+  specialEnemy2Count: 10
   specialEnemy3Prefab: {fileID: 489410436617930548, guid: 36cf4605d87b78a4d8ceb83ccbb708ce, type: 3}
   specialEnemy3Count: 3
   specialEnemy4Prefab: {fileID: 489410436617930548, guid: ac01a4a5739e6e6478e46dc072260a69, type: 3}

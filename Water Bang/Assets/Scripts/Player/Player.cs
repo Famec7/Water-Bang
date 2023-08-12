@@ -30,31 +30,34 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        mousePoint = Input.mousePosition;
-        mousePoint = Camera.main.ScreenToWorldPoint(mousePoint);
-        mousePoint = new Vector3(mousePoint.x, mousePoint.y, 0);
-        if (Input.GetKeyDown(KeyCode.Alpha1) && whistleCount > 0)
+        if (GameManager.instance.currentState == GameStates.inGame)
         {
-            whistle.UseItem();
-            whistleCount--;
-        }
-        else if (Input.GetKey(KeyCode.Alpha2) && bombCount > 0)
-        {
-            bomb.UseItem();
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha3) && energyDrinkCount > 0)
-        {
-            energyDrink.UseItem();
-            energyDrinkCount--;
-        }
-        else if (Input.GetMouseButton(0))
-        {
-            Shoot();
-        }
-        else
-            bomb.range.SetActive(false);
+            mousePoint = Input.mousePosition;
+            mousePoint = Camera.main.ScreenToWorldPoint(mousePoint);
+            mousePoint = new Vector3(mousePoint.x, mousePoint.y, 0);
+            if (Input.GetKeyDown(KeyCode.Alpha1) && whistleCount > 0 && !whistle.inUse)
+            {
+                whistle.UseItem();
+                whistleCount--;
+            }
+            else if (Input.GetKey(KeyCode.Alpha2) && bombCount > 0 && !bomb.inUse)
+            {
+                bomb.UseItem();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3) && energyDrinkCount > 0 && !energyDrink.inUse)
+            {
+                energyDrink.UseItem();
+                energyDrinkCount--;
+            }
+            else if (Input.GetMouseButton(0) && GameManager.instance.waterGun.waterQuantity > 0)
+            {
+                Shoot();
+            }
+            else
+                bomb.range.SetActive(false);
 
-        SetAnimation();
+            SetAnimation();
+        }
     }
 
     private void Shoot()
@@ -74,15 +77,21 @@ public class Player : MonoBehaviour
     {
         if (mousePoint.x < 0)
         {
-            /*animator.SetBool("LeftShoot", true);
-            animator.SetBool("RightShoot", false);*/
             spriteRenderer.flipX = false;
         }
         else
         {
-            /*animator.SetBool("LeftShoot", false);
-            animator.SetBool("RightShoot", true);*/
             spriteRenderer.flipX = true;
         }
+    }
+
+    public void Reset()
+    {
+        whistleCount = 10;
+        bombCount = 10;
+        energyDrinkCount = 10;
+        /*whistle.inUse = false;
+        bomb.inUse = false;
+        energyDrink.inUse = false;*/
     }
 }
