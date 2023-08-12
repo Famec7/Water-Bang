@@ -13,12 +13,12 @@ public class Spawner : MonoBehaviour
     public float specialEnemy3RespawnDelay;
     public float specialEnemy4RespawnDelay;
 
-    public int npcCount;
-    public int enemyCount;
-    public int specialEnemy1Count;
-    public int specialEnemy2Count;
-    public int specialEnemy3Count;
-    public int specialEnemy4Count;
+    private int npcCount = GameManager.instance.npcCount;
+    private int enemyCount = GameManager.instance.enemyCount;
+    private int specialEnemy1Count = GameManager.instance.specialEnemy1Count;
+    private int specialEnemy2Count = GameManager.instance.specialEnemy2Count;
+    private int specialEnemy3Count = GameManager.instance.specialEnemy3Count;
+    private int specialEnemy4Count = GameManager.instance.specialEnemy4Count;
 
     private IEnumerator SpawnEnemy(string type)
     {

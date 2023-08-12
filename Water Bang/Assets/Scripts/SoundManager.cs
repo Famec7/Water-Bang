@@ -14,7 +14,8 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip buttonSfx;
     public AudioClip startSfx;
-    public AudioClip gameOverClip;
+    public AudioClip gameOverSfx;
+    public AudioClip gameClearSfx;
 
     public AudioSource audioBgm;
     private AudioSource audioSfx;
@@ -60,7 +61,14 @@ public class SoundManager : MonoBehaviour
 
     public void PlayGameOverSfx()
     {
-        audioBgm.PlayOneShot(gameOverClip);
+        audioBgm.Stop();
+        audioSfx.PlayOneShot(gameOverSfx);
+    }
+
+    public void PlayGameClearSfx()
+    {
+        audioBgm.Stop();
+        audioSfx.PlayOneShot(gameClearSfx);
     }
     public void SetBgmVolume(float value)
     {

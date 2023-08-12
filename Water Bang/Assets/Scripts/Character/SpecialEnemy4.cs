@@ -30,15 +30,18 @@ public class SpecialEnemy4 : Character
     {
         while (true)
         {
-            sfx.PlayOneShot(attackClip);
+            yield return new WaitForSeconds(attackTime);
+
             Collider2D[] collider = Physics2D.OverlapCircleAll(this.transform.position, radius);
-            foreach (Collider2D col in collider)
+            /*foreach (Collider2D col in collider)
             {
                 if (col.gameObject.CompareTag("Npc"))
+                {
                     ScoreManager.instance.Score -= power;   // 게임매니저에 있는 점수를 감점하는 방식으로 변경하기
-            }
-
-            yield return new WaitForSeconds(attackTime);
+                }
+            }*/
+            ScoreManager.instance.Score -= power;
+            sfx.PlayOneShot(attackClip);
         }
     }
 

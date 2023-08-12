@@ -12,7 +12,7 @@ public class ScoreManager : MonoBehaviour
         else { Destroy(gameObject); }
     }
 
-    public float maxScore = 50;
+    public float maxScore = 100;
     private float score;
     public float staticDecay = 1;
 
@@ -22,7 +22,8 @@ public class ScoreManager : MonoBehaviour
         set
         {
             if (value > maxScore) score = maxScore;
-            else if (value <= 0) GameManager.instance.currentState = GameStates.gameOver;
+            else if (value <= 0)
+                score = 0;
             else score = value;
         }
     }

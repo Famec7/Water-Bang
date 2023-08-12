@@ -34,16 +34,37 @@ public class GameManager : MonoBehaviour
     }
 
     // 메인화면에 필요한 요소들
+    [Header ("Main Screen")]
     public GameObject StartScreen;
     public GameObject SettingScreen;
     public GameObject SelectScreen;
 
+    [Header ("InGameObject")]
     // 인게임 화면에 필요한 요소들
     public GameObject playerObject;
     public GameObject inGameUI;
     public GameObject pauseUI;
     public GameObject gameOverUI;
     public GameObject gameClearUI;
+    public Text scoreText;
+
+    public int npcCount = 0;
+    public int enemyCount = 0;
+    public int specialEnemy1Count = 0;
+    public int specialEnemy2Count = 0;
+    public int specialEnemy3Count = 0;
+    public int specialEnemy4Count = 0;
+    private int allCount = 0;
+
+    public int AllCount
+    {
+        get { return allCount; }
+        set
+        {
+            if (allCount < 0) allCount = 0;
+            else allCount = value;
+        }
+    }
 
     // 시작화면
     public void MainScreen()
@@ -78,6 +99,10 @@ public class GameManager : MonoBehaviour
     public void ButtonStage1() {
         currentStage = 0;
         currentState = GameStates.inGame;
+        npcCount = 0;
+        enemyCount = 2;
+        specialEnemy4Count = 0;
+        allCount = enemyCount + specialEnemy1Count + specialEnemy2Count + specialEnemy3Count + specialEnemy4Count;
 
         SceneControl();
     }
@@ -85,6 +110,11 @@ public class GameManager : MonoBehaviour
     {
         currentStage = 1;
         currentState = GameStates.inGame;
+        npcCount = 30;
+        enemyCount = 10;
+        specialEnemy2Count = 10;
+        specialEnemy4Count = 10;
+        allCount = enemyCount + specialEnemy1Count + specialEnemy2Count + specialEnemy3Count + specialEnemy4Count;
 
         SceneControl();
     }
@@ -92,6 +122,12 @@ public class GameManager : MonoBehaviour
     {
         currentStage = 2;
         currentState = GameStates.inGame;
+        npcCount = 25;
+        enemyCount = 15;
+        specialEnemy2Count = 15;
+        specialEnemy3Count = 15;
+        specialEnemy4Count = 15;
+        allCount = enemyCount + specialEnemy1Count + specialEnemy2Count + specialEnemy3Count + specialEnemy4Count;
 
         SceneControl();
     }
@@ -106,7 +142,7 @@ public class GameManager : MonoBehaviour
         else if (currentStage == 2)
             ButtonStage3();
     }
-    public void GoToOverScene()
+    public void GameOver()
     {
         currentState = GameStates.gameOver;
         SoundManager.instance.audioBgm.Stop();
@@ -126,13 +162,24 @@ public class GameManager : MonoBehaviour
         pauseUI.SetActive(false);
         Time.timeScale = 1.0f;
     }
+    public void GameClear()
+    {
+        currentState = GameStates.gameClear;
+        SoundManager.instance.audioBgm.Stop();
+        scoreText.text = "점수:       " + ScoreManager.instance.Score.ToString();
+        SceneControl();
+    }
 
     void Update()
     {
-        if (!gameOverUI.activeSelf && (currentState == GameStates.gameOver || !SoundManager.instance.audioBgm.isPlaying))
+        if(currentState == GameStates.inGame)
         {
-            currentState = GameStates.gameOver;
-            GoToOverScene();
+            // 게임 오버
+            if (ScoreManager.instance.Score <= 0 || !SoundManager.instance.audioBgm.isPlaying)
+                GameOver();
+            // 게임 클리어
+            else if (AllCount == 0)
+                GameClear();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -173,6 +220,15 @@ public class GameManager : MonoBehaviour
                 inGameUI.SetActive(false);
                 gameOverUI.SetActive(true);
                 SoundManager.instance.PlayGameOverSfx();
+                if (SceneManager.loadedSceneCount >= 2 && SceneManager.GetSceneAt(1).buildIndex == currentStage)
+                    SceneManager.UnloadSceneAsync(currentStage);
+                break;
+            case GameStates.gameClear:
+                Time.timeScale = 0f;
+                inGameUI.SetActive(false);
+                gameClearUI.SetActive(true);
+                SoundManager.instance.PlayGameClearSfx();
+                //게임 클리어 효과음
                 if (SceneManager.loadedSceneCount >= 2 && SceneManager.GetSceneAt(1).buildIndex == currentStage)
                     SceneManager.UnloadSceneAsync(currentStage);
                 break;

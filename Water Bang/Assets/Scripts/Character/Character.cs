@@ -98,7 +98,10 @@ public class Character : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);    // 퇴장 애니메이션 시간으로 설정하기
         ObjectPool.instance.ReturnObject(this.gameObject);
         if (gameObject.CompareTag("Enemy"))
+        {
+            GameManager.instance.AllCount--;
             DropItem();
+        }
         currentState = States.Idle;
         speed = tmp;
     }
