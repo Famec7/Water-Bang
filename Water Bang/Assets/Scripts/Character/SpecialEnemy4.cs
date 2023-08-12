@@ -40,7 +40,8 @@ public class SpecialEnemy4 : Character
                     ScoreManager.instance.Score -= power;   // 게임매니저에 있는 점수를 감점하는 방식으로 변경하기
                 }
             }*/
-            ScoreManager.instance.Score -= power;
+            if(collider.Length > 0)
+                ScoreManager.instance.Score -= power;
             sfx.PlayOneShot(attackClip);
         }
     }

@@ -1826,7 +1826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.107547104, g: 0.73990136, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1904,7 +1904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perkImages:
   - {fileID: 21300000, guid: 503ef2f62464f8b45afffad9a752380d, type: 3}
-  - {fileID: 21300000, guid: 503ef2f62464f8b45afffad9a752380d, type: 3}
+  - {fileID: 21300000, guid: f4643ee287c02094da2df790f44ed45a, type: 3}
   - {fileID: 21300000, guid: 503ef2f62464f8b45afffad9a752380d, type: 3}
   closeButton: {fileID: 1404153734}
 --- !u!114 &665574630
@@ -2083,6 +2083,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 1656775971}
   gameClearUI: {fileID: 1667298215}
   scoreText: {fileID: 270560563}
+  perk: {fileID: 1589172946}
   npcCount: 0
   enemyCount: 0
   specialEnemy1Count: 0
@@ -2251,7 +2252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.105882354, g: 0.7411765, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

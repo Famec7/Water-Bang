@@ -7,7 +7,6 @@ public class RayCast : MonoBehaviour
     float rayDistance = 15f;
     Vector3 MousePosition;
     Camera cam;
-    ScoreManager manager;
 
     [SerializeField]
     WaterGun player;
@@ -15,7 +14,6 @@ public class RayCast : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
-        manager = GameManager.instance.GetComponent<ScoreManager>();
     }
 
     void Update()
@@ -35,15 +33,10 @@ public class RayCast : MonoBehaviour
                     if (hit.collider.tag == "Enemy")
                     {
                         hit.collider.gameObject.GetComponent<Character>().currentState = States.Exit;
-                        manager.Score += 5 + 10 * manager.Combo++;
-                        manager.isComboUp = true;
                     }
                     if (hit.collider.tag == "Npc")
                     {
                         hit.collider.gameObject.GetComponent<Character>().currentState = States.Exit;
-                        manager.Score -= 5;
-                        manager.Combo = 0;
-                        manager.isComboUp = true;
                     }
                 }
 

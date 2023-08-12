@@ -199,8 +199,8 @@ MonoBehaviour:
   speed: 3
   hitClip: {fileID: 8300000, guid: d5342c82301939d4ca1250b4cc25d1e0, type: 3}
   currentState: 0
-  radius: 50
-  power: 3
+  radius: 5
+  power: 2
   attackTime: 5
   attackClip: {fileID: 8300000, guid: 37882eb87bc82da4399aed72c93003c1, type: 3}
 --- !u!82 &8545526707444762231

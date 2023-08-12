@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
     public GameObject gameClearUI;
     public Text scoreText;
+    public GameObject perk;
 
     public int npcCount = 0;
     public int enemyCount = 0;
@@ -101,7 +102,10 @@ public class GameManager : MonoBehaviour
         currentState = GameStates.inGame;
         npcCount = 0;
         enemyCount = 2;
-        specialEnemy4Count = 0;
+        specialEnemy1Count = 0;
+        specialEnemy2Count = 0;
+        specialEnemy3Count = 0;
+        specialEnemy4Count = 00;
         allCount = enemyCount + specialEnemy1Count + specialEnemy2Count + specialEnemy3Count + specialEnemy4Count;
 
         SceneControl();
@@ -110,10 +114,12 @@ public class GameManager : MonoBehaviour
     {
         currentStage = 1;
         currentState = GameStates.inGame;
-        npcCount = 30;
-        enemyCount = 10;
-        specialEnemy2Count = 10;
-        specialEnemy4Count = 10;
+        npcCount = 0;
+        enemyCount = 2;
+        specialEnemy1Count = 0;
+        specialEnemy2Count = 0;
+        specialEnemy3Count = 0;
+        specialEnemy4Count = 0;
         allCount = enemyCount + specialEnemy1Count + specialEnemy2Count + specialEnemy3Count + specialEnemy4Count;
 
         SceneControl();
@@ -124,8 +130,9 @@ public class GameManager : MonoBehaviour
         currentState = GameStates.inGame;
         npcCount = 25;
         enemyCount = 15;
+        specialEnemy1Count = 0;
         specialEnemy2Count = 15;
-        specialEnemy3Count = 15;
+        specialEnemy3Count = 0;
         specialEnemy4Count = 15;
         allCount = enemyCount + specialEnemy1Count + specialEnemy2Count + specialEnemy3Count + specialEnemy4Count;
 
@@ -167,6 +174,10 @@ public class GameManager : MonoBehaviour
         currentState = GameStates.gameClear;
         SoundManager.instance.audioBgm.Stop();
         scoreText.text = "Á¡¼ö:       " + ScoreManager.instance.Score.ToString();
+        if(ScoreManager.instance.Score == 100)
+            perk.SetActive(true);
+        else
+            perk.SetActive(false);
         SceneControl();
     }
 

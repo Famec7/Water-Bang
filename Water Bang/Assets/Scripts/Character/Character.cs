@@ -100,7 +100,15 @@ public class Character : MonoBehaviour
         if (gameObject.CompareTag("Enemy"))
         {
             GameManager.instance.AllCount--;
+            ScoreManager.instance.Score += 5 + 10 * ScoreManager.instance.Combo++;
+            ScoreManager.instance.isComboUp = true;
             DropItem();
+        }
+        else if(gameObject.CompareTag("Npc"))
+        {
+            ScoreManager.instance.Score -= 5;
+            ScoreManager.instance.Combo = 0;
+            ScoreManager.instance.isComboUp = true;
         }
         currentState = States.Idle;
         speed = tmp;
