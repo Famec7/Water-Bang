@@ -90,8 +90,12 @@ public class Player : MonoBehaviour
         whistleCount = 10;
         bombCount = 10;
         energyDrinkCount = 10;
-        /*whistle.inUse = false;
-        bomb.inUse = false;
-        energyDrink.inUse = false;*/
+        if (whistle != null && bomb != null && energyDrink != null)
+        {
+            whistle.inUse = false;
+            bomb.inUse = false;
+            energyDrink.inUse = false;
+            StopAllCoroutines();
+        }
     }
 }

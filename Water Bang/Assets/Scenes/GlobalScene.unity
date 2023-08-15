@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 46876398}
   - component: {fileID: 46876400}
   - component: {fileID: 46876399}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,7 +679,6 @@ RectTransform:
   m_Children:
   - {fileID: 1656775972}
   - {fileID: 1667298216}
-  - {fileID: 1346380728}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2122,7 +2121,7 @@ GameObject:
   - component: {fileID: 627536730}
   - component: {fileID: 627536732}
   - component: {fileID: 627536731}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2321,7 +2320,7 @@ MonoBehaviour:
   perkImages:
   - {fileID: 21300000, guid: 503ef2f62464f8b45afffad9a752380d, type: 3}
   - {fileID: 21300000, guid: f4643ee287c02094da2df790f44ed45a, type: 3}
-  - {fileID: 21300000, guid: 503ef2f62464f8b45afffad9a752380d, type: 3}
+  - {fileID: 21300000, guid: 0dbc5c658314500479aa6740f33231c2, type: 3}
   closeButton: {fileID: 1404153734}
 --- !u!114 &665574630
 MonoBehaviour:
@@ -5211,7 +5210,7 @@ GameObject:
   - component: {fileID: 1310948501}
   - component: {fileID: 1310948500}
   - component: {fileID: 1310948499}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5354,7 +5353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1346380728}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: PauseUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5375,7 +5374,7 @@ RectTransform:
   m_Children:
   - {fileID: 1310948498}
   - {fileID: 1853921914}
-  m_Father: {fileID: 129043284}
+  m_Father: {fileID: 2082018845}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7733,7 +7732,7 @@ GameObject:
   - component: {fileID: 1853921917}
   - component: {fileID: 1853921916}
   - component: {fileID: 1853921915}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9016,7 +9015,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &2082018845
 RectTransform:
@@ -9034,6 +9033,7 @@ RectTransform:
   - {fileID: 405868824}
   - {fileID: 562726185}
   - {fileID: 853021609}
+  - {fileID: 1346380728}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
