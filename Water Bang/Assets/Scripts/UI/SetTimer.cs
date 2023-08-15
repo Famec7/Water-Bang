@@ -23,5 +23,8 @@ public class SetTimer : MonoBehaviour
             timer.speed = 149.0f / baseSpeed;
         else if (GameManager.instance.currentStage == 2)
             timer.speed = 132.0f / baseSpeed;
+
+        if (GameManager.instance.currentState == GameStates.pause)
+            timer.speed = 0f;
     }
 }

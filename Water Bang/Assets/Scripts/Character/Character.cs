@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public enum States
 {
@@ -100,8 +101,11 @@ public class Character : MonoBehaviour
         if (gameObject.CompareTag("Enemy"))
         {
             GameManager.instance.AllCount--;
-            ScoreManager.instance.Score += 5 + 10 * ScoreManager.instance.Combo++;
+            int score = 5 + 10 * ScoreManager.instance.Combo++;
+            /*ScoreManager.instance.Score += 5 + 10 * ScoreManager.instance.Combo++;*/
+            ScoreManager.instance.Score += score;
             ScoreManager.instance.isComboUp = true;
+            ScoreManager.instance.CreateScoreText(this.transform.position, score);
             DropItem();
         }
         else if(gameObject.CompareTag("Npc"))
@@ -109,6 +113,7 @@ public class Character : MonoBehaviour
             ScoreManager.instance.Score -= 5;
             ScoreManager.instance.Combo = 0;
             ScoreManager.instance.isComboUp = true;
+            ScoreManager.instance.CreateScoreText(this.transform.position, -5);
         }
         currentState = States.Idle;
         speed = tmp;

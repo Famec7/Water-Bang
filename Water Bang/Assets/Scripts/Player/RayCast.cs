@@ -11,6 +11,8 @@ public class RayCast : MonoBehaviour
     [SerializeField]
     WaterGun player;
 
+    public ScoreText scoreText;
+
     void Start()
     {
         cam = GetComponent<Camera>();

@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public GameObject StartScreen;
     public GameObject SettingScreen;
     public GameObject SelectScreen;
+    public GameObject licenseScreen;
 
     [Header ("InGameObject")]
     // 인게임 화면에 필요한 요소들
@@ -89,8 +90,14 @@ public class GameManager : MonoBehaviour
     {
         StartScreen.SetActive(false);
         SettingScreen.SetActive(true);
+        licenseScreen.SetActive(false);
     }
 
+    public void OnClickLicenseButton()
+    {
+        licenseScreen.SetActive(true);
+        SettingScreen.SetActive(false);
+    }
     public void OnClickExitButton()
     {
         Application.Quit();
@@ -100,8 +107,8 @@ public class GameManager : MonoBehaviour
     public void ButtonStage1() {
         currentStage = 0;
         currentState = GameStates.inGame;
-        npcCount = 0;
-        enemyCount = 2;
+        npcCount = 10;
+        enemyCount = 10;
         specialEnemy1Count = 0;
         specialEnemy2Count = 0;
         specialEnemy3Count = 0;

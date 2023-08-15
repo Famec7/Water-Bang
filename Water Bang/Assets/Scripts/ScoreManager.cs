@@ -6,6 +6,8 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
 
+    public GameObject canvas;
+    public GameObject scoreText;
     void Awake()
     {
         if (instance == null) { instance = this; }
@@ -65,6 +67,16 @@ public class ScoreManager : MonoBehaviour
         Score -= staticDecay;
         Debug.Log(score);
         StartCoroutine(StaticDecrease());
+    }
+
+    public GameObject CreateScoreText(Vector3 pos, int score)
+    {
+        GameObject obj = Instantiate(scoreText);
+        obj.transform.position = Camera.main.WorldToScreenPoint(pos);
+        obj.transform.SetParent(canvas.transform);
+        obj.GetComponent<ScoreText>().SetText(score);
+
+        return obj;
     }
 
     void Start()
