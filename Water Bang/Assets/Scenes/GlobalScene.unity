@@ -2036,6 +2036,7 @@ GameObject:
   - component: {fileID: 746253021}
   - component: {fileID: 746253022}
   - component: {fileID: 746253023}
+  - component: {fileID: 746253024}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2074,6 +2075,8 @@ MonoBehaviour:
   waterGun: {fileID: 1430800321}
   currentState: 0
   currentStage: 0
+  lockStage2: 0
+  lockStage3: 0
   StartScreen: {fileID: 405868823}
   SettingScreen: {fileID: 562726184}
   SelectScreen: {fileID: 1548128598}
@@ -2105,6 +2108,18 @@ MonoBehaviour:
   maxScore: 100
   staticDecay: 1
   isComboUp: 0
+--- !u!114 &746253024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746253020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e31b919bd58513488d8f8457087ae60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &764534053
 GameObject:
   m_ObjectHideFlags: 0

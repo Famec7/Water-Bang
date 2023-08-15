@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
         currentState = GameStates.inMain;
     }
 
+    public bool lockStage2;
+    public bool lockStage3;
+
     // 메인화면에 필요한 요소들
     [Header ("Main Screen")]
     public GameObject StartScreen;
@@ -112,6 +115,7 @@ public class GameManager : MonoBehaviour
     }
     public void ButtonStage2()
     {
+        if (lockStage2) return;
         currentStage = 1;
         currentState = GameStates.inGame;
         npcCount = 0;
@@ -126,6 +130,7 @@ public class GameManager : MonoBehaviour
     }
     public void ButtonStage3()
     {
+        if (lockStage3) return;
         currentStage = 2;
         currentState = GameStates.inGame;
         npcCount = 25;
@@ -174,6 +179,12 @@ public class GameManager : MonoBehaviour
         currentState = GameStates.gameClear;
         SoundManager.instance.audioBgm.Stop();
         scoreText.text = "점수:       " + ScoreManager.instance.Score.ToString();
+        // 스테이지 해금 조건
+        if (ScoreManager.instance.Score >= 70)
+        {
+            if (currentStage == 0) { lockStage2 = false; DataManager.instance.DataSave(); }
+            if (currentStage == 1) { lockStage3 = false; DataManager.instance.DataSave(); }
+        }
         if(ScoreManager.instance.Score == 100)
             perk.SetActive(true);
         else
