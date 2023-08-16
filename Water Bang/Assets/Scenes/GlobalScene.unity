@@ -7017,7 +7017,7 @@ MonoBehaviour:
   waterQuantity: 0
   isReloading: 0
   isInfinite: 0
-  reloadSound: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 1e94fbd11af209c49b3923e7394d04c3, type: 3}
 --- !u!4 &1430800322
 Transform:
   m_ObjectHideFlags: 0
@@ -7042,9 +7042,9 @@ AudioSource:
   m_GameObject: {fileID: 1430800320}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6975006679411801289, guid: 9aae6a4479217704fab2cbc30af6373b, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
