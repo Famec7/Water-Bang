@@ -217,14 +217,14 @@ public class GameManager : MonoBehaviour
             // 게임 클리어
             else if (AllCount == 0)
                 GameClear();
-        }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (currentState != GameStates.pause)
-                Pause();
-            else
-                Continue();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (currentState != GameStates.pause)
+                    Pause();
+                else
+                    Continue();
+            }
         }
     }
 
