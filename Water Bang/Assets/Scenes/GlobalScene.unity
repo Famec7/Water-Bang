@@ -3103,13 +3103,15 @@ MonoBehaviour:
   waterGun: {fileID: 1430800321}
   currentState: 0
   currentStage: 0
-  lockStage2: 0
-  lockStage3: 0
+  lockStage2: 1
+  lockStage3: 1
   StartScreen: {fileID: 405868823}
   SettingScreen: {fileID: 562726184}
   SelectScreen: {fileID: 1548128598}
   licenseScreen: {fileID: 853021608}
   tutorial: {fileID: 1568832984}
+  stage2: {fileID: 934012309}
+  stage3: {fileID: 972718974}
   playerObject: {fileID: 353246795}
   inGameUI: {fileID: 169751885}
   pauseUI: {fileID: 1346380727}
@@ -4436,7 +4438,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 934012310}
   m_OnClick:
     m_PersistentCalls:
@@ -4921,7 +4923,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 972718975}
   m_OnClick:
     m_PersistentCalls:

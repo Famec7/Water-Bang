@@ -96,7 +96,7 @@ public class Character : MonoBehaviour
         animator.SetBool("Idle", false);
         animator.SetBool("Exit", true);
 
-        yield return new WaitForSecondsRealtime(0.5f);    // 퇴장 애니메이션 시간으로 설정하기
+        yield return new WaitForSecondsRealtime(1.0f);    // 퇴장 애니메이션 시간으로 설정하기
         ObjectPool.instance.ReturnObject(this.gameObject);
         if (gameObject.CompareTag("Enemy"))
         {

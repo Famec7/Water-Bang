@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpecialEnemy2 : Character
 {
-    [SerializeField] private float responeTime;
+    private float responeTime;
     [SerializeField] private float spawnNumber;
     [SerializeField] private float radius;
 
@@ -13,6 +13,7 @@ public class SpecialEnemy2 : Character
     protected override void Awake()
     {
         base.Awake();
+        responeTime = Random.Range(3, 9);
     }
     private void Start()
     {

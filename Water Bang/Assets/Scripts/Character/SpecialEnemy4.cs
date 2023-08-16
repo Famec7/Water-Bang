@@ -8,7 +8,6 @@ public class SpecialEnemy4 : Character
     private float radius;
     [SerializeField]
     private float power;
-    [SerializeField]
     private float attackTime;
 
     public AudioClip attackClip;
@@ -16,6 +15,7 @@ public class SpecialEnemy4 : Character
     protected override void Awake()
     {
         base.Awake();
+        attackTime = Random.Range(3, 9);
     }
     private void Start()
     {

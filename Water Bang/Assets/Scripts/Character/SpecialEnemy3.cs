@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SpecialEnemy3 : Character
 {
-    [SerializeField] private float attackTime;
+    private float attackTime;
     [SerializeField] private float attackDuration;
     public Sprite[] blurImages;
     private Sprite blurImage;
@@ -20,6 +20,7 @@ public class SpecialEnemy3 : Character
         blur = transform.GetChild(0).gameObject;
         blur.gameObject.transform.SetParent(null);
         blur.transform.position = this.transform.position;
+        attackTime = Random.Range(5, 10);
     }
     private void Start()
     {

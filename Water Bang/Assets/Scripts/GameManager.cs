@@ -25,10 +25,11 @@ public class GameManager : MonoBehaviour
 
     public int currentStage = 0;
 
-    void Awake()
+    private void Awake()
     {
         if (instance == null) { instance = this; }
         else { Destroy(gameObject); }
+
         Time.timeScale = 0f;
         currentState = GameStates.inMain;
     }
@@ -37,14 +38,16 @@ public class GameManager : MonoBehaviour
     public bool lockStage3;
 
     // 메인화면에 필요한 요소들
-    [Header ("Main Screen")]
+    [Header("Main Screen")]
     public GameObject StartScreen;
     public GameObject SettingScreen;
     public GameObject SelectScreen;
     public GameObject licenseScreen;
     public GameObject tutorial;
+    public Button stage2;
+    public Button stage3;
 
-    [Header ("InGameObject")]
+    [Header("InGameObject")]
     // 인게임 화면에 필요한 요소들
     public GameObject playerObject;
     public GameObject inGameUI;
@@ -87,6 +90,15 @@ public class GameManager : MonoBehaviour
         StartScreen.SetActive(false);
         gameOverUI.SetActive(false);
         gameClearUI.SetActive(false);
+
+        if (lockStage2 == false)
+            stage2.interactable = true;
+        else
+            stage2.interactable = false;
+        if (lockStage3 == false)
+            stage3.interactable = true;
+        else
+            stage3.interactable = false;
         SceneControl();
     }
 
@@ -113,7 +125,8 @@ public class GameManager : MonoBehaviour
         tutorial.SetActive(true);
     }
 
-    public void ButtonStage1() {
+    public void ButtonStage1()
+    {
         currentStage = 0;
         currentState = GameStates.inGame;
         npcCount = 10;
@@ -121,7 +134,7 @@ public class GameManager : MonoBehaviour
         specialEnemy1Count = 0;
         specialEnemy2Count = 0;
         specialEnemy3Count = 0;
-        specialEnemy4Count = 00;
+        specialEnemy4Count = 0;
         allCount = enemyCount + specialEnemy1Count + specialEnemy2Count + specialEnemy3Count + specialEnemy4Count;
 
         SceneControl();
@@ -197,10 +210,18 @@ public class GameManager : MonoBehaviour
         // 스테이지 해금 조건
         if (ScoreManager.instance.Score >= 70)
         {
-            if (currentStage == 0) { lockStage2 = false; DataManager.instance.DataSave(); }
-            if (currentStage == 1) { lockStage3 = false; DataManager.instance.DataSave(); }
+            if (currentStage == 0)
+            {
+                lockStage2 = false; DataManager.instance.DataSave();
+                stage2.interactable = true;
+            }
+            if (currentStage == 1)
+            {
+                lockStage3 = false; DataManager.instance.DataSave();
+                stage3.interactable = true;
+            }
         }
-        if(ScoreManager.instance.Score == 100)
+        if (ScoreManager.instance.Score == 100)
             perk.SetActive(true);
         else
             perk.SetActive(false);
@@ -209,7 +230,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(currentState == GameStates.inGame)
+        if (currentState == GameStates.inGame)
         {
             // 게임 오버
             if (ScoreManager.instance.Score <= 0 || !SoundManager.instance.audioBgm.isPlaying)
@@ -230,7 +251,7 @@ public class GameManager : MonoBehaviour
 
     private void SceneControl()
     {
-        switch(currentState)
+        switch (currentState)
         {
             case GameStates.inGame:
                 Reset();
