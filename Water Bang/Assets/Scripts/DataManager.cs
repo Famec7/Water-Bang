@@ -47,7 +47,6 @@ public class DataManager : MonoBehaviour
                 GameManager.instance.lockStage3 = saveData.Stage3;
             }
         }
-        Debug.Log("Data Loaded");
     }
 
     public void DataSave()
