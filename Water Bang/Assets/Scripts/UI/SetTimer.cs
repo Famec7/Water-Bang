@@ -17,12 +17,16 @@ public class SetTimer : MonoBehaviour
     {
         if (this.gameObject.activeSelf)
             timer.Play("Timer");
-        if (GameManager.instance.currentStage == 0)
-            timer.speed = 124.0f / baseSpeed;
-        else if (GameManager.instance.currentStage == 1)
-            timer.speed = 149.0f / baseSpeed;
-        else if (GameManager.instance.currentStage == 2)
-            timer.speed = 132.0f / baseSpeed;
+
+        if (GameManager.instance.currentState == GameStates.inGame)
+        {
+            if (GameManager.instance.currentStage == 0)
+                timer.speed = baseSpeed / 124.0f;
+            else if (GameManager.instance.currentStage == 1)
+                timer.speed = baseSpeed / 149.0f;
+            else if (GameManager.instance.currentStage == 2)
+                timer.speed = baseSpeed / 132.0f;
+        }
 
         if (GameManager.instance.currentState == GameStates.pause)
             timer.speed = 0f;

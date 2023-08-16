@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public GameObject SettingScreen;
     public GameObject SelectScreen;
     public GameObject licenseScreen;
+    public GameObject tutorial;
 
     [Header ("InGameObject")]
     // 인게임 화면에 필요한 요소들
@@ -79,8 +80,8 @@ public class GameManager : MonoBehaviour
     public void OnClickStartButton()
     {
         currentState = GameStates.inSelect;
-        StartScreen.SetActive(false);
         SelectScreen.SetActive(true);
+        StartScreen.SetActive(false);
         gameOverUI.SetActive(false);
         gameClearUI.SetActive(false);
         SceneControl();
@@ -104,6 +105,11 @@ public class GameManager : MonoBehaviour
     }
 
     // 스테이지 선택화면
+    public void TutorialButton()
+    {
+        tutorial.SetActive(true);
+    }
+
     public void ButtonStage1() {
         currentStage = 0;
         currentState = GameStates.inGame;
