@@ -174,6 +174,7 @@ public class GameManager : MonoBehaviour
         currentState = GameStates.pause;
         pauseUI.SetActive(true);
         Time.timeScale = 0.0f;
+        SoundManager.instance.audioBgm.Pause();
     }
 
     public void Continue()
@@ -181,6 +182,7 @@ public class GameManager : MonoBehaviour
         currentState = GameStates.inGame;
         pauseUI.SetActive(false);
         Time.timeScale = 1.0f;
+        SoundManager.instance.audioBgm.UnPause();
     }
     public void GameClear()
     {
