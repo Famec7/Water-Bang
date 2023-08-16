@@ -56,8 +56,6 @@ public class ScoreManager : MonoBehaviour
             currentTime = 0f;
             Combo = 0;
         }
-
-        //Debug.Log(currentTime);
         StartCoroutine(Timer(currentTime));
     }
 
