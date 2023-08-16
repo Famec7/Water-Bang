@@ -10,6 +10,9 @@ public class WaterGun : MonoBehaviour
     public bool isReloading = false;
     public bool isInfinite = false;
 
+    public AudioClip reloadSound;
+    private AudioSource sfx;
+
     public void ShootWater()
     {
         if (!isReloading && Input.GetMouseButton(0))
@@ -36,19 +39,29 @@ public class WaterGun : MonoBehaviour
         isReloading = true;
     }
 
-    void Start()
+    private void Awake()
+    {
+        sfx = GetComponent<AudioSource>();
+    }
+    private void Start()
     {
         waterQuantity = waterTank;
     }
 
-    void Update()
+    private void Update()
     {
         if (GameManager.instance.currentState == GameStates.inGame && !isInfinite)
         {
-            if (waterQuantity <= 0 && !isReloading) { StartReload(); }
+            if (waterQuantity <= 0) {
+                if (Input.GetMouseButton(0))
+                {
+                    if (!sfx.isPlaying)
+                        sfx.PlayOneShot(reloadSound);
+                }
+                if(!isReloading)
+                    StartReload(); 
+            }
             else ShootWater();
-
-            if (Input.GetKeyDown(KeyCode.R) && !isReloading) { StartReload(); }
         }
     }
 }
