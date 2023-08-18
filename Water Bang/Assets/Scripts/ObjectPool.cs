@@ -79,7 +79,7 @@ public class ObjectPool : MonoBehaviour
         waterDrops = new List<GameObject>();
 
         npcCount = GameManager.instance.npcCount;
-        enemyCount = GameManager.instance.enemyCount * 2;
+        enemyCount = GameManager.instance.enemyCount * 10;
         specialEnemy1Count = GameManager.instance.specialEnemy1Count;
         specialEnemy2Count = GameManager.instance.specialEnemy2Count;
         specialEnemy3Count = GameManager.instance.specialEnemy3Count;

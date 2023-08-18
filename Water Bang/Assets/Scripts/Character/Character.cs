@@ -68,8 +68,8 @@ public class Character : MonoBehaviour
     }
     private void Start()
     {
-        if (this.CompareTag("Enemy"))
-            StartCoroutine("DcreaseScore");
+        /*if (this.CompareTag("Enemy"))
+            StartCoroutine("DcreaseScore");*/
     }
     protected virtual void Update()
     {
@@ -105,7 +105,7 @@ public class Character : MonoBehaviour
         if (gameObject.CompareTag("Enemy"))
         {
             GameManager.instance.AllCount--;
-            int score = 5 + 10 * ScoreManager.instance.Combo++;
+            int score = ++ScoreManager.instance.Combo;
             /*ScoreManager.instance.Score += 5 + 10 * ScoreManager.instance.Combo++;*/
             ScoreManager.instance.Score += score;
             ScoreManager.instance.isComboUp = true;

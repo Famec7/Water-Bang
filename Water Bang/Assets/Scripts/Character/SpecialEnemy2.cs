@@ -34,6 +34,7 @@ public class SpecialEnemy2 : Character
                 GameObject enemy = ObjectPool.instance.GetObject("enemy");
                 // 적 스폰 방식은 주어진 반지름 안에서 랜덤으로 생성
                 enemy.gameObject.transform.position = GetPosition();
+                GameManager.instance.AllCount++;
             }
         }
     }

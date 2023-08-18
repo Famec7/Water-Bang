@@ -129,12 +129,12 @@ public class GameManager : MonoBehaviour
     {
         currentStage = 0;
         currentState = GameStates.inGame;
-        npcCount = 20;
+        npcCount = 30;
         enemyCount = 10;
-        specialEnemy1Count = 0;
+        specialEnemy1Count = 10;
         specialEnemy2Count = 0;
         specialEnemy3Count = 0;
-        specialEnemy4Count = 0;
+        specialEnemy4Count = 10;
         allCount = enemyCount + specialEnemy1Count + specialEnemy2Count + specialEnemy3Count + specialEnemy4Count;
 
         SceneControl();
@@ -144,12 +144,12 @@ public class GameManager : MonoBehaviour
         if (lockStage2) return;
         currentStage = 1;
         currentState = GameStates.inGame;
-        npcCount = 0;
-        enemyCount = 2;
-        specialEnemy1Count = 0;
-        specialEnemy2Count = 0;
+        npcCount = 25;
+        enemyCount = 15;
+        specialEnemy1Count = 15;
+        specialEnemy2Count = 10;
         specialEnemy3Count = 0;
-        specialEnemy4Count = 0;
+        specialEnemy4Count = 10;
         allCount = enemyCount + specialEnemy1Count + specialEnemy2Count + specialEnemy3Count + specialEnemy4Count;
 
         SceneControl();
@@ -161,9 +161,9 @@ public class GameManager : MonoBehaviour
         currentState = GameStates.inGame;
         npcCount = 25;
         enemyCount = 15;
-        specialEnemy1Count = 0;
+        specialEnemy1Count = 15;
         specialEnemy2Count = 15;
-        specialEnemy3Count = 0;
+        specialEnemy3Count = 10;
         specialEnemy4Count = 15;
         allCount = enemyCount + specialEnemy1Count + specialEnemy2Count + specialEnemy3Count + specialEnemy4Count;
 
