@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour
     public float specialEnemy4RespawnDelay;
 
     private int npcCount = GameManager.instance.npcCount;
-    private int enemyCount = GameManager.instance.enemyCount;
+    private int enemyCount = GameManager.instance.enemyCount * 4;
     private int specialEnemy1Count = GameManager.instance.specialEnemy1Count;
     private int specialEnemy2Count = GameManager.instance.specialEnemy2Count;
     private int specialEnemy3Count = GameManager.instance.specialEnemy3Count;

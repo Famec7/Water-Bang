@@ -66,7 +66,11 @@ public class Character : MonoBehaviour
         movePosition.transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
         spriteRenderer.flipX = IsFlip();
     }
-
+    private void Start()
+    {
+        if (this.CompareTag("Enemy"))
+            StartCoroutine("DcreaseScore");
+    }
     protected virtual void Update()
     {
         if (GameManager.instance.currentState == GameStates.inGame)
@@ -96,7 +100,7 @@ public class Character : MonoBehaviour
         animator.SetBool("Idle", false);
         animator.SetBool("Exit", true);
 
-        yield return new WaitForSecondsRealtime(1.0f);    // 퇴장 애니메이션 시간으로 설정하기
+        yield return new WaitForSecondsRealtime(0.3f);    // 퇴장 애니메이션 시간으로 설정하기
         ObjectPool.instance.ReturnObject(this.gameObject);
         if (gameObject.CompareTag("Enemy"))
         {
@@ -112,9 +116,10 @@ public class Character : MonoBehaviour
         {
             ScoreManager.instance.Score -= 5;
             ScoreManager.instance.Combo = 0;
-            ScoreManager.instance.isComboUp = true;
+            ScoreManager.instance.isComboUp = false;
             ScoreManager.instance.CreateScoreText(this.transform.position, -5);
         }
+        Debug.Log(ScoreManager.instance.Score);
         currentState = States.Idle;
         speed = tmp;
     }
@@ -148,6 +153,15 @@ public class Character : MonoBehaviour
                 moveDelay -= Time.deltaTime;
             }
         }
+    }
+
+    private IEnumerator DcreaseScore()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        if(currentState == States.Idle)
+            ScoreManager.instance.Score -= 2;
+        StartCoroutine("DcreaseScore");
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collider)

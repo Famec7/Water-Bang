@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
     {
         currentStage = 0;
         currentState = GameStates.inGame;
-        npcCount = 10;
+        npcCount = 20;
         enemyCount = 10;
         specialEnemy1Count = 0;
         specialEnemy2Count = 0;
