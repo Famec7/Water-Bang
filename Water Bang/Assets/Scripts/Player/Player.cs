@@ -87,9 +87,9 @@ public class Player : MonoBehaviour
 
     public void Reset()
     {
-        whistleCount = 10;
-        bombCount = 10;
-        energyDrinkCount = 10;
+        whistleCount = 1;
+        bombCount = 1;
+        energyDrinkCount = 1;
         if (whistle != null && bomb != null && energyDrink != null)
         {
             whistle.inUse = false;

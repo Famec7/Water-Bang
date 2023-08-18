@@ -261,7 +261,7 @@ public class GameManager : MonoBehaviour
                 playerObject.SetActive(true);
                 inGameUI.SetActive(true);
                 gameOverUI.SetActive(false);
-                SceneManager.LoadScene(currentStage, LoadSceneMode.Additive);
+                SceneManager.LoadScene(currentStage + 1, LoadSceneMode.Additive);
                 break;
             case GameStates.inSelect:
                 Time.timeScale = 0f;
@@ -270,16 +270,16 @@ public class GameManager : MonoBehaviour
                 inGameUI.SetActive(false);
                 pauseUI.SetActive(false);
                 gameOverUI.SetActive(false);
-                if (SceneManager.loadedSceneCount >= 2 && SceneManager.GetSceneAt(1).buildIndex == currentStage)
-                    SceneManager.UnloadSceneAsync(currentStage);
+                if (SceneManager.loadedSceneCount >= 2 && SceneManager.GetSceneAt(1).buildIndex == currentStage + 1)
+                    SceneManager.UnloadSceneAsync(currentStage + 1);
                 break;
             case GameStates.gameOver:
                 Time.timeScale = 0f;
                 inGameUI.SetActive(false);
                 gameOverUI.SetActive(true);
                 SoundManager.instance.PlayGameOverSfx();
-                if (SceneManager.loadedSceneCount >= 2 && SceneManager.GetSceneAt(1).buildIndex == currentStage)
-                    SceneManager.UnloadSceneAsync(currentStage);
+                if (SceneManager.loadedSceneCount >= 2 && SceneManager.GetSceneAt(1).buildIndex == currentStage + 1)
+                    SceneManager.UnloadSceneAsync(currentStage + 1);
                 break;
             case GameStates.gameClear:
                 Time.timeScale = 0f;
@@ -287,8 +287,8 @@ public class GameManager : MonoBehaviour
                 gameClearUI.SetActive(true);
                 SoundManager.instance.PlayGameClearSfx();
                 //게임 클리어 효과음
-                if (SceneManager.loadedSceneCount >= 2 && SceneManager.GetSceneAt(1).buildIndex == currentStage)
-                    SceneManager.UnloadSceneAsync(currentStage);
+                if (SceneManager.loadedSceneCount >= 2 && SceneManager.GetSceneAt(1).buildIndex == currentStage + 1)
+                    SceneManager.UnloadSceneAsync(currentStage + 1);
                 break;
             default:
                 break;
