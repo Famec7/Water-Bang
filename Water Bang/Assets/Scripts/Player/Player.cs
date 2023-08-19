@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
                 waterDrop.transform.position = rightMuzzlePos;
             else
                 waterDrop.transform.position = leftMuzzlePos;
+            waterDrop.GetComponent<WaterDrop>().Move();
             waterDrop.SetActive(true);
         }
     }

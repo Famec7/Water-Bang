@@ -6,29 +6,29 @@ public class WaterDrop : MonoBehaviour
 {
     public float speed;
     private Vector3 mousePoint;
+    private Vector3 dir;
 
-    private void Start()
-    {
-        StartCoroutine("Move");
-    }
-
-    private IEnumerator Move()
+    public void Move()
     {
         mousePoint = Input.mousePosition;
         mousePoint = Camera.main.ScreenToWorldPoint(mousePoint);
         mousePoint = new Vector3(mousePoint.x, mousePoint.y, 0);
-
-        yield return null;
+        dir = mousePoint - this.transform.position;
+        dir = dir.normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, mousePoint, speed * Time.unscaledDeltaTime);
-
-        if (Vector2.Distance(transform.position, mousePoint) < 0.3)
+        if (this.gameObject.activeSelf)
         {
-            StartCoroutine("Move");
-            this.gameObject.SetActive(false);
+            this.transform.position += dir * speed * Time.unscaledDeltaTime;
+
+            if (Vector2.Distance(transform.position, mousePoint) < 0.3)
+            {
+                this.gameObject.SetActive(false);
+            }
         }
     }
 }

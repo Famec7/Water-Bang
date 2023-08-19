@@ -247,7 +247,6 @@ public class GameManager : MonoBehaviour
                     Continue();
             }
         }
-        Debug.Log(currentState);
     }
 
     private void SceneControl()
@@ -259,7 +258,6 @@ public class GameManager : MonoBehaviour
                 LoadingSceneManager.LoadScene(currentStage + 1);
                 SelectScreen.SetActive(false);
                 gameOverUI.SetActive(false);
-                Debug.Log(gameOverUI.activeSelf);
                 break;
             case GameStates.inSelect:
                 Time.timeScale = 0f;
