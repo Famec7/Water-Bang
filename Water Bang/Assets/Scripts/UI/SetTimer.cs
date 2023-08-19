@@ -31,4 +31,9 @@ public class SetTimer : MonoBehaviour
         if (GameManager.instance.currentState == GameStates.pause)
             timer.speed = 0f;
     }
+
+    public void OnGameOver()
+    {
+        GameManager.instance.GameOver();
+    }
 }

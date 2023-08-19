@@ -61,10 +61,13 @@ public class ScoreManager : MonoBehaviour
 
     private IEnumerator StaticDecrease()
     {
-        yield return new WaitForSeconds(1f);
-        Score -= staticDecay;
-        Debug.Log(score);
-        StartCoroutine(StaticDecrease());
+        if (GameManager.instance.currentState == GameStates.inGame)
+        {
+            yield return new WaitForSecondsRealtime(1f);
+            Score -= staticDecay;
+            Debug.Log(score);
+            StartCoroutine(StaticDecrease());
+        }
     }
 
     public GameObject CreateScoreText(Vector3 pos, int score)

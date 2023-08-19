@@ -326,7 +326,7 @@ MonoBehaviour:
   waterBombPrefab: {fileID: 7654132609752765308, guid: cd5aa0ec9c7cfc247ab784f4b92be88d, type: 3}
   energyDrinkPrefab: {fileID: 2051076629501530822, guid: 2c7f3060cb4c28d44a4774bfbe23543d, type: 3}
   ItemCount: 30
-  waterPrefab: {fileID: 7843594667010036933, guid: 3ce866289694667449871f5072ea3356, type: 3}
+  waterPrefab: {fileID: 3778900535613064540, guid: 3ce866289694667449871f5072ea3356, type: 3}
   waterDropCount: 300
 --- !u!4 &1138374798
 Transform:

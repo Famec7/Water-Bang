@@ -25,4 +25,9 @@ public class SliderImage : MonoBehaviour
         if (currentScore >= 0 && currentScore < 10)
             satisfactionImage.sprite = satisfactionImages[currentScore];
     }
+
+    private void OnDisable()
+    {
+        satisfactionImage.sprite = satisfactionImages[9];
+    }
 }

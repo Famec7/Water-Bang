@@ -208,7 +208,7 @@ public class GameManager : MonoBehaviour
         SoundManager.instance.audioBgm.Stop();
         scoreText.text = "점수:       " + ScoreManager.instance.Score.ToString();
         // 스테이지 해금 조건
-        if (ScoreManager.instance.Score >= 70)
+        if (ScoreManager.instance.Score >= 60)
         {
             if (currentStage == 0)
             {
@@ -233,7 +233,7 @@ public class GameManager : MonoBehaviour
         if (currentState == GameStates.inGame)
         {
             // 게임 오버
-            if (ScoreManager.instance.Score <= 0 || !SoundManager.instance.audioBgm.isPlaying)
+            if (ScoreManager.instance.Score <= 0)
                 GameOver();
             // 게임 클리어
             else if (AllCount == 0)
@@ -247,6 +247,7 @@ public class GameManager : MonoBehaviour
                     Continue();
             }
         }
+        Debug.Log(currentState);
     }
 
     private void SceneControl()
@@ -255,13 +256,10 @@ public class GameManager : MonoBehaviour
         {
             case GameStates.inGame:
                 Reset();
-                Time.timeScale = 1f;
-                SoundManager.instance.PlayBgm();
+                LoadingSceneManager.LoadScene(currentStage + 1);
                 SelectScreen.SetActive(false);
-                playerObject.SetActive(true);
-                inGameUI.SetActive(true);
                 gameOverUI.SetActive(false);
-                SceneManager.LoadScene(currentStage + 1, LoadSceneMode.Additive);
+                Debug.Log(gameOverUI.activeSelf);
                 break;
             case GameStates.inSelect:
                 Time.timeScale = 0f;
@@ -270,19 +268,19 @@ public class GameManager : MonoBehaviour
                 inGameUI.SetActive(false);
                 pauseUI.SetActive(false);
                 gameOverUI.SetActive(false);
-                if (SceneManager.loadedSceneCount >= 2 && SceneManager.GetSceneAt(1).buildIndex == currentStage + 1)
-                    SceneManager.UnloadSceneAsync(currentStage + 1);
+                SceneManager.UnloadSceneAsync(currentStage + 1);
                 break;
             case GameStates.gameOver:
                 Time.timeScale = 0f;
+                playerObject.SetActive(false);
                 inGameUI.SetActive(false);
                 gameOverUI.SetActive(true);
                 SoundManager.instance.PlayGameOverSfx();
-                if (SceneManager.loadedSceneCount >= 2 && SceneManager.GetSceneAt(1).buildIndex == currentStage + 1)
-                    SceneManager.UnloadSceneAsync(currentStage + 1);
+                SceneManager.UnloadSceneAsync(currentStage + 1);
                 break;
             case GameStates.gameClear:
                 Time.timeScale = 0f;
+                playerObject.SetActive(false);
                 inGameUI.SetActive(false);
                 gameClearUI.SetActive(true);
                 SoundManager.instance.PlayGameClearSfx();
