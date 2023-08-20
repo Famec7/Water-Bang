@@ -22,13 +22,13 @@ public class RayCast : MonoBehaviour
     {
         if (GameManager.instance.currentState == GameStates.inGame)
         {
+            MousePosition = Input.mousePosition;
+            MousePosition = cam.ScreenToWorldPoint(MousePosition);
+
+            RaycastHit2D hit = Physics2D.Raycast(MousePosition, transform.forward, rayDistance);
+            Debug.DrawRay(MousePosition, transform.forward * 10, Color.red, 0.2f);
             if (Input.GetMouseButton(0))
             {
-                MousePosition = Input.mousePosition;
-                MousePosition = cam.ScreenToWorldPoint(MousePosition);
-
-                RaycastHit2D hit = Physics2D.Raycast(MousePosition, transform.forward, rayDistance);
-                Debug.DrawRay(MousePosition, transform.forward * 10, Color.red, 0.2f);
 
                 if (hit && !player.isReloading)
                 {
@@ -42,6 +42,9 @@ public class RayCast : MonoBehaviour
                     }
                 }
 
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
                 if (hit)
                 {
                     if (hit.collider.tag == "Whistle")

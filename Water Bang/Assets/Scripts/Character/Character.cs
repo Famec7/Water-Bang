@@ -78,6 +78,7 @@ public class Character : MonoBehaviour
             switch (currentState)
             {
                 case States.Idle:
+                    RandomMove();
                     animator.SetBool("Idle", true);
                     animator.SetBool("Exit", false);
                     break;
@@ -87,21 +88,17 @@ public class Character : MonoBehaviour
                 default:
                     break;
             }
-            RandomMove();
         }
     }
 
     private IEnumerator Exit()
     {
-        float tmp = speed;
-        speed = 0;
-        if(!sfx.isPlaying)
+        if (!sfx.isPlaying)
             sfx.PlayOneShot(hitClip);
         animator.SetBool("Idle", false);
         animator.SetBool("Exit", true);
 
         yield return new WaitForSecondsRealtime(0.3f);    // 퇴장 애니메이션 시간으로 설정하기
-        ObjectPool.instance.ReturnObject(this.gameObject);
         if (gameObject.CompareTag("Enemy"))
         {
             GameManager.instance.AllCount--;
@@ -112,16 +109,15 @@ public class Character : MonoBehaviour
             ScoreManager.instance.CreateScoreText(this.transform.position, score);
             DropItem();
         }
-        else if(gameObject.CompareTag("Npc"))
+        else if (gameObject.CompareTag("Npc"))
         {
             ScoreManager.instance.Score -= 5;
             ScoreManager.instance.Combo = 0;
             ScoreManager.instance.isComboUp = false;
             ScoreManager.instance.CreateScoreText(this.transform.position, -5);
         }
-        Debug.Log(ScoreManager.instance.Score);
         currentState = States.Idle;
-        speed = tmp;
+        ObjectPool.instance.ReturnObject(this.gameObject);
     }
 
     private void DropItem()
@@ -159,7 +155,7 @@ public class Character : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
 
-        if(currentState == States.Idle)
+        if (currentState == States.Idle)
             ScoreManager.instance.Score -= 2;
         StartCoroutine("DcreaseScore");
     }

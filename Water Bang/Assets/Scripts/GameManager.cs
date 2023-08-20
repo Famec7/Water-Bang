@@ -91,14 +91,11 @@ public class GameManager : MonoBehaviour
         gameOverUI.SetActive(false);
         gameClearUI.SetActive(false);
 
-        if (lockStage2 == false)
-            stage2.interactable = true;
-        else
-            stage2.interactable = false;
-        if (lockStage3 == false)
-            stage3.interactable = true;
-        else
-            stage3.interactable = false;
+        stage2.interactable = !lockStage2;
+        stage2.gameObject.transform.GetChild(0).gameObject.SetActive(lockStage2);
+        stage3.interactable = !lockStage3;
+        stage3.gameObject.transform.GetChild(0).gameObject.SetActive(lockStage3);
+
         SceneControl();
     }
 
