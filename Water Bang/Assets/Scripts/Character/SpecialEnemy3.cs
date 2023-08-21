@@ -55,4 +55,10 @@ public class SpecialEnemy3 : Character
     {
         base.OnTriggerEnter2D(collider);
     }
+
+    private void OnDisable()
+    {
+        blur.SetActive(false);
+        StopCoroutine("Attack");
+    }
 }
